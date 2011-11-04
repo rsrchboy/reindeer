@@ -37,6 +37,13 @@ __END__
     # ta-da!
     use Reindeer;
 
+    # ...is the same as:
+    use Moose;
+    use MooseX::MarkAsMethods autoclean => 1;
+    use MooseX::AlwaysCoerce;
+    use MooseX::AttributeShortcuts;
+    # etc, etc, etc
+
 =head1 DESCRIPTION
 
 Like L<Moose>?  Use MooseX::* extensions?  Maybe some L<MooseX::Types>
@@ -79,6 +86,12 @@ marked as methods, and L<namespace::autoclean> invoked.
 
 Non-Moose specific items made available to your class/role:
 
+=head2 L<namespace::autoclean>
+
+Technically, this is done by L<MooseX::MarkAsMethods>, but it's worth pointing
+out here.  Any overloads present in your class/role are marked as methods
+before autoclean is unleashed, so Everything Will Just Work as Expected.
+
 =head2 L<Try::Tiny>
 
 =head1 CAVEAT
@@ -89,7 +102,8 @@ YMMV :)
 
 =head1 SEE ALSO
 
-L<Moose>, L<Reindeer::Role>.
+L<Moose>, L<Reindeer::Role>, L<overload>.  All of the above referenced
+packages.
 
 =head1 BUGS
 

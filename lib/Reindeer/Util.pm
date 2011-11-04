@@ -1,6 +1,6 @@
 package Reindeer::Util;
 
-# ABSTRACT: The great new Reindeer!
+# ABSTRACT: Common and utility functions for Reindeer
 
 use strict;
 use warnings;
