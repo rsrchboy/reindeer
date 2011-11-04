@@ -50,15 +50,18 @@ way... Just with more pointy antlers.
 =head1 INCLUDED EXTENSIONS
 
 Reindeer includes the traits and sugar provided by the following extensions.
-Everything their docs say they can do, you can do by default in Reindeer.
+Everything their docs say they can do, you can do by default with Reindeer.
+
+=head2 L<MooseX::AbstractMethod>
 
 =head2 L<MooseX::AlwaysCoerce>
 
-=head2 L<MooseX::AbstractMethod>
-
-=head2 L<MooseX::AbstractMethod>
-
 =head2 L<MooseX::AttributeShortcuts>
+
+=head2 L<MooseX::MarkAsMethods>
+
+Note that this causes any overloads you've defined in your class/role to be
+marked as methods, and L<namespace::autoclean> invoked.
 
 =head2 L<MooseX::NewDefaults>
 
@@ -71,6 +74,12 @@ Everything their docs say they can do, you can do by default in Reindeer.
 =head2 L<MooseX::Types::Common::String>
 
 =head2 L<MooseX::Types::Common::Numeric>
+
+=head1 OTHER
+
+Non-Moose specific items made available to your class/role:
+
+=head2 L<Try::Tiny>
 
 =head1 CAVEAT
 
