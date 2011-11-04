@@ -9,15 +9,8 @@ use Reindeer::Util;
 use Moose::Exporter;
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
-    install => [ qw{ import unimport } ],
-
-    also => [ 'Moose', Reindeer::Util::also_list() ],
-
-    class_metaroles => {
-        class => [ qw{
-            MooseX::MarkAsMethods::MetaRole::MethodMarker
-        } ],
-    },
+    install => [ qw{ import unimport }                ],
+    also    => [ 'Moose', Reindeer::Util::also_list() ],
 );
 
 sub init_meta {
@@ -30,8 +23,9 @@ sub init_meta {
     ### more properly in import()?
     Reindeer::Util->import_type_libraries({ -into => $for_class });
     Try::Tiny->export_to_level(1);
+    MooseX::MarkAsMethods->import({ into => $for_class }, autoclean => 1);
 
-    goto $init_meta;
+    goto $init_meta if $init_meta;
 }
 
 !!42;
