@@ -9,14 +9,13 @@ use warnings;
 #use common::sense;
 #use Moose::Exporter;
 
-use Moose                      ( );
-use MooseX::AlwaysCoerce       ( );
-use MooseX::AbstractMethod     ( );
-use MooseX::AttributeShortcuts ( );
-use MooseX::NewDefaults        ( );
-use MooseX::MarkAsMethods      ( ); #
-use MooseX::StrictConstructor  ( );
-use MooseX::Types::Moose       ( );
+use Moose                            ( );
+use MooseX::AlwaysCoerce             ( );
+use MooseX::AbstractMethod           ( );
+use MooseX::AttributeShortcuts 0.006 ( );
+use MooseX::NewDefaults              ( );
+use MooseX::MarkAsMethods 0.14       ( );
+use MooseX::StrictConstructor        ( );
 
 use MooseX::Types::Moose           ( );
 use MooseX::Types::Common::String  ( );
