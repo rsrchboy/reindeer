@@ -7,10 +7,13 @@ use warnings;
 
 use Reindeer::Util;
 use Moose::Exporter;
+use Class::Load;
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
     install => [ qw{ import unimport }                ],
     also    => [ 'Moose', Reindeer::Util::also_list() ],
+
+    trait_aliases => [ Reindeer::Util::trait_aliases() ],
 );
 
 sub init_meta {
@@ -53,6 +56,46 @@ Reindeer aims to resolve that :)  Reindeer _is_ Moose -- it's just Moose with
 a number of the more useful/popular extensions already applied.  Reindeer is a
 drop-in replacement for your "use Moose" line, that behaves in the exact same
 way... Just with more pointy antlers.
+
+=head1 AVAILABLE ATTRIBUTE TRAITS
+
+We make available the following trait aliases.  These traits are NOT
+automatically applied to attributes, and can be used as:
+
+    has foo => (traits => [ AutoDestruct ], ...);
+
+=head2 AutoDestruct
+
+    has foo => (
+        traits  => [ AutoDestruct ],
+        is      => 'ro',
+        lazy    => 1,
+        builder => 1,
+        ttl     => 600,
+    );
+
+Allows for a "ttl" attribute option; this is the length of time (in seconds)
+that a stored value is allowed to live; after that time the value is cleared
+and the value rebuilt (given that the attribute is lazy and has a builder
+defined).
+
+See L<MooseX::AutoDestruct> for more information.
+
+=head2 MultiInitArg
+
+has 'data' => (
+    traits    => [ MultiInitArg ],
+    is        => 'ro',
+    isa       => 'Str',
+    init_args => [qw(munge frobnicate)],
+);
+
+This trait allows your attribute to be initialized with any one of multiple
+arguments to new().
+
+See L<MooseX::MultiInitArg> for more information.
+
+=head2 UndefTolerant
 
 =head1 INCLUDED EXTENSIONS
 

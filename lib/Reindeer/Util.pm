@@ -5,10 +5,6 @@ package Reindeer::Util;
 use strict;
 use warnings;
 
-#use namespace::autoclean;
-#use common::sense;
-#use Moose::Exporter;
-
 use Moose                            ( );
 use MooseX::AlwaysCoerce             ( );
 use MooseX::AbstractMethod           ( );
@@ -16,10 +12,30 @@ use MooseX::AttributeShortcuts 0.006 ( );
 use MooseX::NewDefaults              ( );
 use MooseX::MarkAsMethods 0.14       ( );
 use MooseX::StrictConstructor        ( );
+use MooseX::Types::Moose             ( );
+use MooseX::Types::Common::String    ( );
+use MooseX::Types::Common::Numeric   ( );
 
-use MooseX::Types::Moose           ( );
-use MooseX::Types::Common::String  ( );
-use MooseX::Types::Common::Numeric ( );
+# SetOnce, AutoDestruct, MultiInitArg, ClassAttribute
+# SlurpyConstructor, Params::Validate
+
+# Attribute traits (non-default):
+# UndefTolerant, MergeHashRef
+
+sub trait_aliases {
+
+    return (
+        [ 'MooseX::AutoDestruct::Trait::Attribute' => 'AutoDestruct'  ],
+        [ 'MooseX::MultiInitArg::Trait'            => 'MultiInitArg'  ],
+        [ 'MooseX::UndefTolerant::Attribute'       => 'UndefTolerant' ],
+    );
+}
+
+# Types:
+# Tied, Perl, IxHash, ENV
+
+# Roles:
+# TraitConstructor, Traits
 
 sub also_list {
 
