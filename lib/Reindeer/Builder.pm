@@ -68,9 +68,65 @@ __END__
 
 =head1 SYNOPSIS
 
+    package My::Reindeer;
     use Reindeer::Builder
         also => {
             exclude => [ ... ], # packages from also
             add     => [ ... ],
         };
 
+    package My::Class;
+    use My::Reindeer;
+
+    # profit!
+    has foo => (...);
+
+=head1 DESCRIPTION
+
+Sometimes you need more than what L<Reindeer> provides...  And sometime less.
+Or there's a conflict with a default extension (e.g. a Catalyst controller
+with a config that will end up with unrecognized arguments passed to the
+constructor will blow up if L<MooseX::StrictConstructor> is used).
+
+Reindeer::Builder provides a simple interface to add additional extensions --
+or filter the list of default extensions.  It's intended to be used in a
+package of its own that can then be used in the same way L<Moose> or
+L<Reindeer> is in a package, to set up the metaclass and sugar.
+
+=head1 ROLE OR CLASS?
+
+If the package you're using Reindeer::Builder in ends with '::Role', we set up
+role metaclass and sugar.
+
+=head1 ARGUMENTS
+
+We take a set of name / hashref pairs.  Right now we only support 'also' for
+names.
+
+It is legal and supported to add and exclude at the same time.
+
+=head2 also / exclude
+
+If given, we expect exclude to be an arrayref of package names to be excluded
+from the list of extensions.  (e.g. this filters what is passed to
+L<Moose::Exporter>'s 'also' argument.
+
+e.g.
+
+    use Reindeer::Builder also => { exclude => 'MooseX::Something' };
+
+=head2 also / add
+
+If given, we expect add to be an arrayref of package names to be added
+to the list of extensions.  (e.g. this augments what is passed to
+L<Moose::Exporter>'s 'also' argument.
+
+e.g.
+
+    use Reindeer::Builder also => { add => 'MooseX::SomethingElse' };
+
+=head1 SEE ALSO
+
+L<Reindeer>, L<Moose::Exporter>.
+
+=cut
