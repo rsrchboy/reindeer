@@ -57,6 +57,17 @@ a number of the more useful/popular extensions already applied.  Reindeer is a
 drop-in replacement for your "use Moose" line, that behaves in the exact same
 way... Just with more pointy antlers.
 
+=head1 EARLY RELEASE!
+
+Be aware this package should be considered early release code.  While L<Moose>
+and all our incorporated extensions have their own classifications (generally
+GA or "stable"), this bundling is still under active development, and more
+extensions, features and the like may still be added.
+
+That said, my goal here is to increase functionality, not decrease it.
+
+When this package hits GA / stable, I'll set the release to be >= 1.000.
+
 =head1 AVAILABLE ATTRIBUTE TRAITS
 
 We make available the following trait aliases.  These traits are NOT
