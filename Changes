@@ -2,6 +2,8 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.003     2011-11-06 20:17:59 America/Los_Angeles
+
 0.002     2011-11-03 21:28:26 America/Los_Angeles
 - Require recent MooseX::MarkAsMethods and ::AttributeShortcuts
 - take advantage of "into" support in MX::MAM 0.14
