@@ -94,12 +94,12 @@ See L<MooseX::AutoDestruct> for more information.
 
 =head2 MultiInitArg
 
-has 'data' => (
-    traits    => [ MultiInitArg ],
-    is        => 'ro',
-    isa       => 'Str',
-    init_args => [qw(munge frobnicate)],
-);
+    has 'data' => (
+        traits    => [ MultiInitArg ],
+        is        => 'ro',
+        isa       => 'Str',
+        init_args => [qw(munge frobnicate)],
+    );
 
 This trait allows your attribute to be initialized with any one of multiple
 arguments to new().
