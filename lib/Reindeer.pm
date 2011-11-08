@@ -10,10 +10,11 @@ use Moose::Exporter;
 use Class::Load;
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
-    install => [ qw{ import unimport }                ],
-    also    => [ 'Moose', Reindeer::Util::also_list() ],
+    install => [ qw{ import unimport } ],
 
-    trait_aliases => [ Reindeer::Util::trait_aliases() ],
+    also          => [ 'Moose', Reindeer::Util::also_list() ],
+    trait_aliases => [ Reindeer::Util::trait_aliases()      ],
+    as_is         => [ Reindeer::Util::as_is()              ],
 );
 
 sub init_meta {
@@ -82,6 +83,14 @@ Coercion is ENABLED by default; explicitly pass "coerce => 0" to disable.
 
 (See also L<MooseX::AlwaysCoerce>.)
 
+=head2 lazy_require => 1
+
+The reader methods for all attributes with that option will throw an exception
+unless a value for the attributes was provided earlier by a constructor
+parameter or through a writer method.
+
+(See also L<MooseX::LazyRequire>.)
+
 =from_other MooseX::AttributeShortcuts / NEW ATTRIBUTE OPTIONS / options
 
 =head1 NEW KEYWORDS (SUGAR)
@@ -144,6 +153,8 @@ Everything their docs say they can do, you can do by default with Reindeer.
 
 =head2 L<MooseX::AttributeShortcuts>
 
+=head2 L<MooseX::LazyRequire>
+
 =head2 L<MooseX::MarkAsMethods>
 
 Note that this causes any overloads you've defined in your class/role to be
@@ -160,6 +171,10 @@ marked as methods, and L<namespace::autoclean> invoked.
 =head2 L<MooseX::Types::Common::String>
 
 =head2 L<MooseX::Types::Common::Numeric>
+
+=head2 L<MooseX::Types::Path::Class>
+
+=head2 L<MooseX::Types::Tied::Hash::IxHash>
 
 =head1 OTHER
 

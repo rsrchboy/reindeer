@@ -9,10 +9,11 @@ use Reindeer::Util;
 use Moose::Exporter;
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
-    install => [ qw{ import unimport }                      ],
-    also    => [ 'Moose::Role', Reindeer::Util::also_list() ],
+    install => [ qw{ import unimport } ],
 
-    trait_aliases => [ Reindeer::Util::trait_aliases() ],
+    also          => [ 'Moose::Role', Reindeer::Util::also_list() ],
+    trait_aliases => [ Reindeer::Util::trait_aliases()            ],
+    as_is         => [ Reindeer::Util::as_is()                    ],
 );
 
 sub init_meta {
