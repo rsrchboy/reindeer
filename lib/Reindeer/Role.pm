@@ -23,6 +23,7 @@ sub init_meta {
     ### $for_class
     Moose::Role->init_meta(for_class => $for_class);
     Reindeer::Util->import_type_libraries({ -into => $for_class });
+    Path::Class->export_to_level(1);
     Try::Tiny->export_to_level(1);
     MooseX::MarkAsMethods->import({ into => $for_class }, autoclean => 1);
 

@@ -26,6 +26,7 @@ sub init_meta {
 
     ### more properly in import()?
     Reindeer::Util->import_type_libraries({ -into => $for_class });
+    Path::Class->export_to_level(1);
     Try::Tiny->export_to_level(1);
     MooseX::MarkAsMethods->import({ into => $for_class }, autoclean => 1);
 
@@ -185,6 +186,8 @@ Non-Moose specific items made available to your class/role:
 Technically, this is done by L<MooseX::MarkAsMethods>, but it's worth pointing
 out here.  Any overloads present in your class/role are marked as methods
 before autoclean is unleashed, so Everything Will Just Work as Expected.
+
+=head2 L<Path::Class>
 
 =head2 L<Try::Tiny>
 

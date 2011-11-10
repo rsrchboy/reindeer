@@ -21,6 +21,9 @@ use MooseX::Types::Common::Numeric          ( );
 use MooseX::Types::Path::Class              ( );
 use MooseX::Types::Tied::Hash::IxHash 0.002 ( );
 
+use Path::Class 0.24 ( );
+use Try::Tiny 0.11   ( );
+
 # SetOnce, AutoDestruct, MultiInitArg, ClassAttribute
 # SlurpyConstructor, Params::Validate
 
