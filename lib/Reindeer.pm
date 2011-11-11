@@ -68,7 +68,7 @@ That said, my goal here is to increase functionality, not decrease it.
 
 When this package hits GA / stable, I'll set the release to be >= 1.000.
 
-=head1 AVAILABLE ATTRIBUTE TRAITS
+=head1 AVAILABLE OPTIONAL ATTRIBUTE TRAITS
 
 We make available the following trait aliases.  These traits are NOT
 automatically applied to attributes, and can be used as:
