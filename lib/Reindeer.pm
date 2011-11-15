@@ -68,6 +68,31 @@ That said, my goal here is to increase functionality, not decrease it.
 
 When this package hits GA / stable, I'll set the release to be >= 1.000.
 
+=head1 NEW ATTRIBUTE OPTIONS
+
+Unless specified here, all options defined by Moose::Meta::Attribute
+and Class::MOP::Attribute remain unchanged.
+
+For the following, "$name" should be read as the attribute name; and the
+various prefixes should be read using the defaults
+
+=head2 coerce => 0
+
+Coercion is ENABLED by default; explicitly pass "coerce => 0" to disable.
+
+(See also L<MooseX::AlwaysCoerce>.)
+
+=from_other MooseX::AttributeShortcuts / NEW ATTRIBUTE OPTIONS / options
+
+=head1 NEW KEYWORDS (SUGAR)
+
+In addition to all sugar provided by L<Moose> (e.g. has, with, extends), we
+provide a couple new keywords.
+
+=from_other MooseX::NewDefaults / NEW SUGAR
+
+=from_other MooseX::AbstractMethod / NEW SUGAR
+
 =head1 AVAILABLE OPTIONAL ATTRIBUTE TRAITS
 
 We make available the following trait aliases.  These traits are NOT
