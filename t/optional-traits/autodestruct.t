@@ -9,7 +9,7 @@ use Test::Moose;
 use Class::Load 'try_load_class';
 
 try_load_class('MooseX::AutoDestruct')
-    or plan skip_all => "Class::Name required to run these tests";
+    or plan skip_all => 'MooseX::AutoDestruct required to run these tests';
 
 # This is more of a "spot check" than an actual set of tests
 
