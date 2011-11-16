@@ -11,6 +11,7 @@ use Moose                                   ( );
 use MooseX::AlwaysCoerce                    ( );
 use MooseX::AbstractMethod                  ( );
 use MooseX::AttributeShortcuts 0.006        ( );
+use MooseX::ClassAttribute 0.26             ( );
 use MooseX::LazyRequire 0.07                ( );
 use MooseX::MarkAsMethods 0.14              ( );
 use MooseX::NewDefaults                     ( );
@@ -24,7 +25,6 @@ use MooseX::Types::Tied::Hash::IxHash 0.002 ( );
 use Path::Class 0.24 ( );
 use Try::Tiny 0.11   ( );
 
-# SetOnce, AutoDestruct, MultiInitArg, ClassAttribute
 # SlurpyConstructor, Params::Validate
 
 sub trait_aliases {
@@ -71,6 +71,7 @@ sub also_list {
         MooseX::AbstractMethod
         MooseX::AlwaysCoerce
         MooseX::AttributeShortcuts
+        MooseX::ClassAttribute
         MooseX::LazyRequire
         MooseX::NewDefaults
         MooseX::StrictConstructor

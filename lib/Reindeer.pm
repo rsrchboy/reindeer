@@ -99,6 +99,13 @@ parameter or through a writer method.
 In addition to all sugar provided by L<Moose> (e.g. has, with, extends), we
 provide a couple new keywords.
 
+=head2 class_has => (...)
+
+Exactly like L<Moose/has>, but operates at the class (rather than instance)
+level.
+
+(See also L<MooseX::ClassAttribute>.)
+
 =from_other MooseX::NewDefaults / NEW SUGAR
 
 =from_other MooseX::AbstractMethod / NEW SUGAR
@@ -153,6 +160,8 @@ Everything their docs say they can do, you can do by default with Reindeer.
 =head2 L<MooseX::AlwaysCoerce>
 
 =head2 L<MooseX::AttributeShortcuts>
+
+=head2 L<MooseX::ClassAttribute>
 
 =head2 L<MooseX::LazyRequire>
 
