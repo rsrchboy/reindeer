@@ -2,11 +2,23 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.004     2011-11-15 16:39:50 America/Los_Angeles
+- add weaver.ini to invoke (the possibly poorly named)
+  Pod::Weaver::Section::Collect::FromOther, so that we can document without
+  redocumenting
+- Add Path::Class to our exports
+- Add MooseX::Types::Path::Class, ::Tied::IxHash, etc.
+- Add a number of "optional" traits, by ensuring aliases are exported for them
+- Add trait_aliases where any of our attribute extensions don't provide them
+  on their own; this allows for a more consistent interface, especially when
+  the traits may need to be applied manually (e.g. to extended attributes from
+  a superclass)
+
 0.003     2011-11-06 20:17:59 America/Los_Angeles
 
 0.002     2011-11-03 21:28:26 America/Los_Angeles
 - Require recent MooseX::MarkAsMethods and ::AttributeShortcuts
-- take advantage of "into" support in MX::MAM 0.14
+- Take advantage of "into" support in MX::MAM 0.14
 
 0.001     2011-10-27 10:49:02 America/Los_Angeles
-- first release
+- First release
