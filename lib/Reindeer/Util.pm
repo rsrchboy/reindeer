@@ -7,7 +7,7 @@ use warnings;
 
 use Class::Load 'load_class';
 
-use Moose                                   ( );
+use Moose 1.15                              ( );
 use MooseX::AlwaysCoerce                    ( );
 use MooseX::AbstractMethod                  ( );
 use MooseX::AttributeShortcuts 0.006        ( );
