@@ -16,6 +16,7 @@ use MooseX::AlwaysCoerce 0.16               ( );
 use MooseX::AbstractMethod 0.003            ( );
 use MooseX::AttributeShortcuts 0.006        ( );
 use MooseX::ClassAttribute 0.26             ( );
+use MooseX::CurriedDelegation               ( );
 use MooseX::LazyRequire 0.07                ( );
 use MooseX::MarkAsMethods 0.14              ( );
 use MooseX::NewDefaults 0.003               ( );
@@ -96,6 +97,7 @@ sub also_list {
         MooseX::AlwaysCoerce
         MooseX::AttributeShortcuts
         MooseX::ClassAttribute
+        MooseX::CurriedDelegation
         MooseX::LazyRequire
         MooseX::NewDefaults
         MooseX::StrictConstructor

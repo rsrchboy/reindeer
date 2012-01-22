@@ -169,6 +169,8 @@ Everything their docs say they can do, you can do by default with Reindeer.
 
 =head2 L<MooseX::ClassAttribute>
 
+=head2 L<MooseX::CurriedDelegation>
+
 =head2 L<MooseX::LazyRequire>
 
 =head2 L<MooseX::MarkAsMethods>
