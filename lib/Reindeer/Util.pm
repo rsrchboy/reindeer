@@ -27,6 +27,12 @@ use Try::Tiny 0.11   ( );
 
 # SlurpyConstructor, Params::Validate
 
+=func trait_aliases
+
+Trait alias definitions for our optional traits.
+
+=cut
+
 sub trait_aliases {
 
     # note that merely specifing aliases does not load the packages; Moose
@@ -52,6 +58,12 @@ sub trait_aliases {
 sub SetOnce { _lazy('MooseX::SetOnce', 'MooseX::SetOnce::Attribute') }
 sub _lazy { load_class(shift); shift }
 
+=func as_is
+
+A list of sugar to export "as_is".
+
+=cut
+
 sub as_is {
 
     return (
@@ -64,6 +76,13 @@ sub as_is {
 
 # Roles:
 # TraitConstructor, Traits
+
+=func also_list
+
+A list of Moose::Exporter based packages that we should also invoke (through
+Moose::Exporter, that is).
+
+=cut
 
 sub also_list {
 
@@ -78,6 +97,12 @@ sub also_list {
     };
 }
 
+=func import_type_libraries
+
+Import our list of type libraries into a given package.
+
+=cut
+
 sub import_type_libraries {
     my ($class, $opts) = @_;
 
@@ -87,6 +112,12 @@ sub import_type_libraries {
 
     return;
 }
+
+=func type_libraries
+
+Returns a list of type libraries currently exported by Reindeer.
+
+=cut
 
 sub type_libraries {
 
@@ -103,8 +134,20 @@ sub type_libraries {
 
 __END__
 
+=begin Pod::Coverage
+
+    SetOnce
+
+=end Pod::Coverage
+
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
+
+This package provides the parts of Reindeer that are common to both Reindeer
+and Reindeer role.  In general, this package contains functions that either
+return lists for L<Moose::Exporter> or actively import other packages into the
+namespace of packages invoking Reindeer or Reindeer::Role (e.g. type
+libraries).
 
 =cut
