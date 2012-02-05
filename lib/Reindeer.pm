@@ -37,6 +37,12 @@ sub init_meta {
 
 __END__
 
+=begin Pod::Coverage
+
+    init_meta
+
+=end Pod::Coverage
+
 =head1 SYNOPSIS
 
     # ta-da!
