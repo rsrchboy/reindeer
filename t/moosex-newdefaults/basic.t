@@ -37,8 +37,6 @@ use Test::Moose;
     default_for two  => 'boo!';
 }
 
-require 't/funcs.pm' unless eval { require funcs };
-
 # make sure classes behave as we expect
 with_immutable {
 

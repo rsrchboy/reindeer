@@ -4,8 +4,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::Moose;
-use Test::Moose::More 0.002;
+use Test::Moose::More 0.005;
 
 # This is more of a "spot check" than an actual set of tests
 
