@@ -52,6 +52,6 @@ are automatically applied.
 
 =head1 SEE ALSO
 
-L<Reindeer>, L<Moose::Role>
+L<Moose::Role>
 
 =cut

@@ -107,15 +107,4 @@ __END__
 
 =head1 DESCRIPTION
 
-=head1 SEE ALSO
-
-=head1 BUGS
-
-All complex software has bugs lurking in it, and this module is no exception.
-
-Bugs, feature requests and pull requests through GitHub are most welcome; our
-page and repo (same URI):
-
-    https://github.com/RsrchBoy/reindeer
-
 =cut
