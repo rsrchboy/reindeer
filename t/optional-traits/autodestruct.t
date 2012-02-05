@@ -6,10 +6,9 @@ use warnings;
 use Test::More;
 use Test::Moose;
 
-use Class::Load 'try_load_class';
-
-try_load_class('MooseX::AutoDestruct')
-    or plan skip_all => 'MooseX::AutoDestruct required to run these tests';
+use Test::Requires {
+    'MooseX::AutoDestruct' => '0.009',
+};
 
 # This is more of a "spot check" than an actual set of tests
 
