@@ -2,6 +2,10 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.005     2012-02-05 09:51:30 America/Los_Angeles
+- Use Test::Requires to check for the presence of optional traits
+- Additional "spot-check" tests
+
 0.004     2011-11-15 16:39:50 America/Los_Angeles
 - add weaver.ini to invoke (the possibly poorly named)
   Pod::Weaver::Section::Collect::FromOther, so that we can document without

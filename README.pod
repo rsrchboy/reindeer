@@ -1,12 +1,14 @@
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 Reindeer - Moose with more antlers
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
@@ -29,6 +31,8 @@ Reindeer aims to resolve that :)  Reindeer _is_ Moose -- it's just Moose with
 a number of the more useful/popular extensions already applied.  Reindeer is a
 drop-in replacement for your "use Moose" line, that behaves in the exact same
 way... Just with more pointy antlers.
+
+=for Pod::Coverage     init_meta
 
 =head1 EARLY RELEASE!
 
@@ -79,6 +83,18 @@ Specifing is => 'lazy' will cause the following options to be set:
     init_arg => undef
     lazy     => 1
 
+=head2 is => 'lazy', default => ...
+
+Specifing is => 'lazy' and a default will cause the following options to be
+set:
+
+    is       => 'ro'
+    init_arg => undef
+    lazy     => 1
+
+Note that this is the same as the prior option, but is included / phrased in
+this way in a (successful, I hope) attempt at clarity.
+
 =head2 builder => 1
 
 Specifying builder => 1 will cause the following options to be set:
@@ -126,6 +142,10 @@ For an attribute named "_foo":
 
 This naming scheme, in which the trigger is always private, is the same as the
 builder naming scheme (just with a different prefix).
+
+=head2 doc => ...
+
+"doc" may now be used as a shorthand for "documentation".
 
 =head1 NEW KEYWORDS (SUGAR)
 
@@ -260,17 +280,33 @@ YMMV :)
 
 =head1 SEE ALSO
 
-L<Moose>, L<Reindeer::Role>, L<overload>.  All of the above referenced
-packages.
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Moose>
+
+=item *
+
+L<All of the above referenced packages.|All of the above referenced packages.>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/reindeer>
+and may be cloned from L<git://github.com/RsrchBoy/reindeer.git>
 
 =head1 BUGS
 
-All complex software has bugs lurking in it, and this module is no exception.
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/reindeer/issues
 
-Bugs, feature requests and pull requests through GitHub are most welcome; our
-page and repo (same URI):
-
-    https://github.com/RsrchBoy/reindeer
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 
