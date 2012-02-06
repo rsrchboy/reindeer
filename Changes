@@ -2,6 +2,10 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.006     2012-02-06 07:42:58 America/Los_Angeles
+- Add explicit version dependencies to most deps.  This should help avoid some
+  install/test failures
+
 0.005     2012-02-05 09:51:30 America/Los_Angeles
 - Use Test::Requires to check for the presence of optional traits
 - Additional "spot-check" tests
