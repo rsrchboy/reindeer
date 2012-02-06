@@ -8,18 +8,18 @@ use warnings;
 use Class::Load 'load_class';
 
 use Moose 1.15                              ( );
-use MooseX::AlwaysCoerce                    ( );
-use MooseX::AbstractMethod                  ( );
+use MooseX::AlwaysCoerce 0.16               ( );
+use MooseX::AbstractMethod 0.003            ( );
 use MooseX::AttributeShortcuts 0.006        ( );
 use MooseX::ClassAttribute 0.26             ( );
 use MooseX::LazyRequire 0.07                ( );
 use MooseX::MarkAsMethods 0.14              ( );
-use MooseX::NewDefaults                     ( );
-use MooseX::StrictConstructor               ( );
-use MooseX::Types::Moose                    ( );
-use MooseX::Types::Common::String           ( );
-use MooseX::Types::Common::Numeric          ( );
-use MooseX::Types::Path::Class              ( );
+use MooseX::NewDefaults 0.003               ( );
+use MooseX::StrictConstructor 0.19          ( );
+use MooseX::Types::Moose 0.31               ( );
+use MooseX::Types::Common::String 0.001004  ( );
+use MooseX::Types::Common::Numeric 0.001004 ( );
+use MooseX::Types::Path::Class 0.05         ( );
 use MooseX::Types::Tied::Hash::IxHash 0.002 ( );
 
 use Path::Class 0.24 ( );
