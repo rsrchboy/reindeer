@@ -5,6 +5,10 @@ package Reindeer::Util;
 use strict;
 use warnings;
 
+use Sub::Exporter -setup => {
+    exports => [ qw{ trait_aliases as_is also_list type_libraries } ],
+};
+
 use Class::Load 'load_class';
 
 use Moose 1.15                              ( );
