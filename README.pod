@@ -8,7 +8,7 @@ Reindeer - Moose with more antlers
 
 =head1 VERSION
 
-version 0.006
+This document describes 0.007 of Reindeer - released February 14, 2012 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -31,6 +31,20 @@ Reindeer aims to resolve that :)  Reindeer _is_ Moose -- it's just Moose with
 a number of the more useful/popular extensions already applied.  Reindeer is a
 drop-in replacement for your "use Moose" line, that behaves in the exact same
 way... Just with more pointy antlers.
+
+=begin stopwords
+
+AutoDestruct
+MultiInitArg
+UndefTolerant
+autoclean
+rwp
+ttl
+metaclass
+
+Specifing
+
+=end stopwords
 
 =for Pod::Coverage     init_meta
 
@@ -235,6 +249,8 @@ Everything their docs say they can do, you can do by default with Reindeer.
 
 =head2 L<MooseX::ClassAttribute>
 
+=head2 L<MooseX::CurriedDelegation>
+
 =head2 L<MooseX::LazyRequire>
 
 =head2 L<MooseX::MarkAsMethods>
@@ -253,6 +269,8 @@ marked as methods, and L<namespace::autoclean> invoked.
 =head2 L<MooseX::Types::Common::String>
 
 =head2 L<MooseX::Types::Common::Numeric>
+
+=head2 L<MooseX::Types::LoadableClass>
 
 =head2 L<MooseX::Types::Path::Class>
 

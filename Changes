@@ -2,6 +2,12 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.007     2012-02-14 20:47:12 America/Los_Angeles
+- add: MooseX::CurriedDelegation
+- add: MooseX::Types::LoadableClass
+- initial combined types library (Reindeer::Types)
+- Reinder::Util can now export functions on request
+
 0.006     2012-02-06 07:42:58 America/Los_Angeles
 - Add explicit version dependencies to most deps.  This should help avoid some
   install/test failures
