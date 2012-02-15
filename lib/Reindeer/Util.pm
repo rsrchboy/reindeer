@@ -23,6 +23,7 @@ use MooseX::StrictConstructor 0.19          ( );
 use MooseX::Types::Moose 0.31               ( );
 use MooseX::Types::Common::String 0.001004  ( );
 use MooseX::Types::Common::Numeric 0.001004 ( );
+use MooseX::Types::LoadableClass 0.006      ( );
 use MooseX::Types::Path::Class 0.05         ( );
 use MooseX::Types::Tied::Hash::IxHash 0.002 ( );
 
@@ -129,6 +130,7 @@ sub type_libraries {
         MooseX::Types::Moose
         MooseX::Types::Common::String
         MooseX::Types::Common::Numeric
+        MooseX::Types::LoadableClass
         MooseX::Types::Path::Class
         MooseX::Types::Tied::Hash::IxHash
     };

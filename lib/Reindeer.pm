@@ -188,6 +188,8 @@ marked as methods, and L<namespace::autoclean> invoked.
 
 =head2 L<MooseX::Types::Common::Numeric>
 
+=head2 L<MooseX::Types::LoadableClass>
+
 =head2 L<MooseX::Types::Path::Class>
 
 =head2 L<MooseX::Types::Tied::Hash::IxHash>
