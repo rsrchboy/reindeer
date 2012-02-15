@@ -37,6 +37,20 @@ sub init_meta {
 
 __END__
 
+=begin stopwords
+
+AutoDestruct
+MultiInitArg
+UndefTolerant
+autoclean
+rwp
+ttl
+metaclass
+
+Specifing
+
+=end stopwords
+
 =begin Pod::Coverage
 
     init_meta

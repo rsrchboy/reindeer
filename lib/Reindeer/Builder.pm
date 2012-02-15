@@ -66,6 +66,12 @@ sub import {
 
 __END__
 
+=begin stopwords
+
+    metaclass
+
+=end stopwords
+
 =head1 SYNOPSIS
 
     package My::Reindeer;
