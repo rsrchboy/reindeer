@@ -31,6 +31,15 @@ make the types easily available even when using Reindeer isn't an option.
 It is not necessary (or prudent) to directly use this in a Reindeer class (or
 role).
 
+=head1 TYPES
+
+=from_other MooseX::Types::LoadableClass / TYPES EXPORTED / type
+
+=from_other MooseX::Types::Common::String / DESCRIPTION / type
+
+=from_other MooseX::Types::Common::Numeric / DESCRIPTION / type
+
+
 =head1 SEE ALSO
 
 L<Reindeer> has the full list of type libraries we incorporate.

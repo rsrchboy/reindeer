@@ -130,12 +130,23 @@ level.
 
 =from_other MooseX::AbstractMethod / NEW SUGAR
 
+=head1 OVERLOADS
+
+It is safe to use overloads in your Reindeer classes and roles; they will
+work just as you expect: overloads in classes can be inherited by subclasses;
+overloads in roles will be incorporated into consuming classes.
+
+(See also L<MooseX::MarkAsMethods>)
+
 =head1 AVAILABLE OPTIONAL ATTRIBUTE TRAITS
 
-We make available the following trait aliases.  These traits are NOT
-automatically applied to attributes, and can be used as:
+We export the following trait aliases.  These traits are not
+automatically applied to attributes, and are lazily loaded (e.g. if you don't
+use them, they won't be loaded and are not dependencies).
 
-    has foo => (traits => [ AutoDestruct ], ...);
+They can be used by specifying them as:
+
+    has foo => (traits => [ TraitAlias ], ...);
 
 =head2 AutoDestruct
 
@@ -169,6 +180,31 @@ arguments to new().
 See L<MooseX::MultiInitArg> for more information.
 
 =head2 UndefTolerant
+
+Applying this trait to your attribute makes it's initialization tolerant of
+of undef.  If you specify the value of undef to any of the attributes they
+will not be initialized (or will be set to the default, if applicable).
+Effectively behaving as if you had not provided a value at all.
+
+    package My:Class;
+    use Moose;
+
+    use MooseX::UndefTolerant::Attribute;
+
+    has 'bar' => (
+        traits    => [ UndefTolerant ],
+        is        => 'ro',
+        isa       => 'Num',
+        predicate => 'has_bar'
+    );
+
+    # Meanwhile, under the city...
+
+    # Doesn't explode
+    my $class = My::Class->new(bar => undef);
+    $class->has_bar # False!
+
+See L<MooseX::UndefTolerant::Attribute> for more information.
 
 =head1 INCLUDED EXTENSIONS
 
@@ -222,13 +258,30 @@ before autoclean is unleashed, so Everything Will Just Work as Expected.
 
 =head2 L<Path::Class>
 
+=from_other Path::Class / SYNOPSIS / all
+
+See the L<Path::Class> documentation for more detail.
+
 =head2 L<Try::Tiny>
+
+=from_other Try::Tiny / SYNOPSIS / all
+
+See the L<Try::Tiny> documentation for more detail.
 
 =head1 CAVEAT
 
 This author is applying his own assessment of "useful/popular extensions".
 You may find yourself in agreement, or violent disagreement with his choices.
 YMMV :)
+
+=head1 ACKNOWLEDGMENTS
+
+Reindeer serves largely to tie together other packages -- Moose extensions and
+other common modules.  Those other packages are largely by other people,
+without whose work Reindeer would have a significantly smaller rack.
+
+We also use documentation as written for the other packages pulled in here to
+help present a cohesive whole.
 
 =head1 SEE ALSO
 
