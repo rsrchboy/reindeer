@@ -39,6 +39,36 @@ role).
 
 =from_other MooseX::Types::Common::Numeric / DESCRIPTION / type
 
+=from_other MooseX::Types::Tied::Hash::IxHash / TYPES / all
+
+(See also L<MooseX::Types::Tied::Hash::IxHash>.)
+
+=head2 Dir
+
+    has 'dir' => (
+        is       => 'ro',
+        isa      => Dir,
+        required => 1,
+        coerce   => 1,
+    );
+
+(See also L<MooseX::Types::Path::Class>.)
+
+=head2 File
+
+    has 'file' => (
+        is       => 'ro',
+        isa      => File,
+        required => 1,
+        coerce   => 1,
+    );
+
+(See also L<MooseX::Types::Path::Class>.)
+
+=head2 MooseX::Types::Moose
+
+We provide all Moose native types by including L<MooseX::Types::Moose>; see
+that package for more information.
 
 =head1 SEE ALSO
 
