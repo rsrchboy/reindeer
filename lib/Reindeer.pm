@@ -9,12 +9,16 @@ use Reindeer::Util;
 use Moose::Exporter;
 use Class::Load;
 
+use MooseX::Traits ();
+
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
     install => [ qw{ import unimport } ],
 
     also          => [ 'Moose', Reindeer::Util::also_list() ],
     trait_aliases => [ Reindeer::Util::trait_aliases()      ],
     as_is         => [ Reindeer::Util::as_is()              ],
+
+    base_class_roles => [ qw{ MooseX::Traits } ],
 );
 
 sub init_meta {
@@ -46,7 +50,6 @@ autoclean
 rwp
 ttl
 metaclass
-
 Specifing
 
 =end stopwords
@@ -89,6 +92,16 @@ extensions, features and the like may still be added.
 That said, my goal here is to increase functionality, not decrease it.
 
 When this package hits GA / stable, I'll set the release to be >= 1.000.
+
+=head1 NEW CLASS METHODS
+
+=head2 with_traits()
+
+This method allows you to easily compose a new class with additional traits:
+
+    my $foo = Bar->with_traits('Stools', 'Norm')->new(beer => 1, tab => undef);
+
+(See also L<MooseX::Traits>.)
 
 =head1 NEW ATTRIBUTE OPTIONS
 
@@ -231,6 +244,13 @@ marked as methods, and L<namespace::autoclean> invoked.
 =head2 L<MooseX::NewDefaults>
 
 =head2 L<MooseX::StrictConstructor>
+
+=head2 L<MooseX::Traits>
+
+This provides a new class method, C<with_traits()>, allowing you to compose
+traits in on the fly:
+
+    my $foo = Bar->with_traits('Stools')->new(...);
 
 =head1 INCLUDED TYPE LIBRARIES
 
