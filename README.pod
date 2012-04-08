@@ -8,7 +8,7 @@ Reindeer - Moose with more antlers
 
 =head1 VERSION
 
-This document describes 0.008 of Reindeer - released February 28, 2012 as part of Reindeer.
+This document describes version 0.009 of Reindeer - released April 07, 2012 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -32,19 +32,14 @@ a number of the more useful/popular extensions already applied.  Reindeer is a
 drop-in replacement for your "use Moose" line, that behaves in the exact same
 way... Just with more pointy antlers.
 
-=begin stopwords
-
-AutoDestruct
+=for stopwords AutoDestruct
 MultiInitArg
 UndefTolerant
 autoclean
 rwp
 ttl
 metaclass
-
 Specifing
-
-=end stopwords
 
 =for Pod::Coverage     init_meta
 
@@ -58,6 +53,16 @@ extensions, features and the like may still be added.
 That said, my goal here is to increase functionality, not decrease it.
 
 When this package hits GA / stable, I'll set the release to be >= 1.000.
+
+=head1 NEW CLASS METHODS
+
+=head2 with_traits()
+
+This method allows you to easily compose a new class with additional traits:
+
+    my $foo = Bar->with_traits('Stools', 'Norm')->new(beer => 1, tab => undef);
+
+(See also L<MooseX::Traits>.)
 
 =head1 NEW ATTRIBUTE OPTIONS
 
@@ -83,41 +88,45 @@ parameter or through a writer method.
 
 =head2 is => 'rwp'
 
-Specifing is => 'rwp' will cause the following options to be set:
+Specifying C<is =E<gt> 'rwp'> will cause the following options to be set:
 
     is     => 'ro'
     writer => "_set_$name"
 
 =head2 is => 'lazy'
 
-Specifing is => 'lazy' will cause the following options to be set:
+Specifying C<is =E<gt> 'lazy'> will cause the following options to be set:
 
     is       => 'ro'
     builder  => "_build_$name"
-    init_arg => undef
     lazy     => 1
+
+B<NOTE:> Since 0.009 we no longer set C<init_arg =E<gt> undef> if no C<init_arg>
+is explicitly provided.  This is a change made in parallel with L<Moo>, based
+on a large number of people surprised that lazy also made one's C<init_def>
+undefined.
 
 =head2 is => 'lazy', default => ...
 
-Specifing is => 'lazy' and a default will cause the following options to be
+Specifying C<is =E<gt> 'lazy'> and a default will cause the following options to be
 set:
 
     is       => 'ro'
-    init_arg => undef
     lazy     => 1
+    default  => ... # as provided
 
-Note that this is the same as the prior option, but is included / phrased in
-this way in a (successful, I hope) attempt at clarity.
+That is, if you specify C<is =E<gt> 'lazy'> and also provide a C<default>, then
+we won't try to set a builder, as well.
 
 =head2 builder => 1
 
-Specifying builder => 1 will cause the following options to be set:
+Specifying C<builder =E<gt> 1> will cause the following options to be set:
 
     builder => "_build_$name"
 
 =head2 clearer => 1
 
-Specifying clearer => 1 will cause the following options to be set:
+Specifying C<clearer =E<gt> 1> will cause the following options to be set:
 
     clearer => "clear_$name"
 
@@ -129,7 +138,7 @@ or, if your attribute name begins with an underscore:
 
 =head2 predicate => 1
 
-Specifying predicate => 1 will cause the following options to be set:
+Specifying C<predicate =E<gt> 1> will cause the following options to be set:
 
     predicate => "has_$name"
 
@@ -141,7 +150,7 @@ or, if your attribute name begins with an underscore:
 
 =head2 trigger => 1
 
-Specifying trigger => 1 will cause the attribute to be created with a trigger
+Specifying C<trigger =E<gt> 1> will cause the attribute to be created with a trigger
 that calls a named method in the class with the options passed to the trigger.
 By default, the method name the trigger calls is the name of the attribute
 prefixed with "_trigger_".
@@ -156,10 +165,6 @@ For an attribute named "_foo":
 
 This naming scheme, in which the trigger is always private, is the same as the
 builder naming scheme (just with a different prefix).
-
-=head2 doc => ...
-
-"doc" may now be used as a shorthand for "documentation".
 
 =head1 NEW KEYWORDS (SUGAR)
 
@@ -297,6 +302,13 @@ marked as methods, and L<namespace::autoclean> invoked.
 =head2 L<MooseX::NewDefaults>
 
 =head2 L<MooseX::StrictConstructor>
+
+=head2 L<MooseX::Traits>
+
+This provides a new class method, C<with_traits()>, allowing you to compose
+traits in on the fly:
+
+    my $foo = Bar->with_traits('Stools')->new(...);
 
 =head1 INCLUDED TYPE LIBRARIES
 
