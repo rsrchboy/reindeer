@@ -12,6 +12,9 @@ use Sub::Install;
 use Reindeer ();
 use Reindeer::Util;
 
+# debugging...
+#use Smart::Comments;
+
 # Look at our args, figure out what needs to be added/filtered
 
 sub import {
@@ -21,16 +24,14 @@ sub import {
     my $target = caller(0); # let's start out simple
     my $for_role = ($target =~ /::Role$/) ? 1 : 0;
 
-    my @also;
+    ### %config
+    my @also = Reindeer::Util::also_list();
     if (exists $config{also}) {
 
-        my $also_config = $config{also};
-
-        my @reindeer = Reindeer::Util::also_list();
-        my @exclude  = @{ $config{also}->{exclude} || [] };
-        my @add      = @{ $config{also}->{add}     || [] };
-
-        @also = @reindeer;
+        ### got an 'also'...
+        my $also_config = delete $config{also};
+        my @exclude     = @{ $also_config->{exclude} || [] };
+        my @add         = @{ $also_config->{add}     || [] };
 
         do { @also = grep { ! $_ ~~ [ @exclude ] } @also }
             if @exclude > 0;
@@ -39,14 +40,15 @@ sub import {
     }
 
     unshift @also, ($for_role ? 'Moose::Role' : 'Moose');
+    ### %config
+    ### @also
+
+    $config{also} = \@also;
 
     # create our methods...
-    #my ($import, $unimport, $init_meta) = Moose::Exporter->build_import_methods(
     my %methods;
     @methods{qw/ import unimport init_meta /} =
-        Moose::Exporter->build_import_methods(
-            also => [ @also ],
-        );
+        Moose::Exporter->build_import_methods(%config);
 
     my $_install = sub {
         Sub::Install::reinstall_sub({

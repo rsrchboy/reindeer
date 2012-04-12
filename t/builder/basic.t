@@ -4,11 +4,9 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::Moose;
+use Test::Moose::More 0.007;
 
-use Moose::Util 'does_role';
-
-# This is more of a "spot check" than an actual set of tests
+# XXX This is more of a "spot check" than an actual set of tests
 
 {
     package TestClass::Reindeer;
@@ -33,10 +31,12 @@ BEGIN { $INC{'TestClass/Reindeer.pm'} = 1 }
 }
 
 with_immutable {
-    meta_ok 'TestClass::Class';
-    ok !does_role('TestClass::Class', 'MooseX::StrictConstructor::Trait::Class'),
-        'TestClass::Class does not do the excluded trait';
-    has_attribute_ok 'TestClass::Class', 'foo';
+
+    validate_class 'TestClass::Class' => (
+        attributes => [ qw{ foo } ],
+        does_not   => [ qw{ MooseX::StrictConstructor::Trait::Class } ],
+    );
+
 } 'TestClass::Class';
 
 done_testing;
