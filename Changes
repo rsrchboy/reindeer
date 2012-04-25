@@ -2,6 +2,10 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.010     2012-04-25 10:34:11 America/Los_Angeles
+- bump IxHash req to 0.003; this is the first version that omits coercion from
+  hashrefs.
+
 0.009     2012-04-07 23:30:51 America/Los_Angeles
 - TRIAL release
 - add: MooseX::Traits
