@@ -2,6 +2,9 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.011     2012-04-26 23:26:57 America/Los_Angeles
+- add ENV as an optional attribute trait
+
 0.010     2012-04-25 10:34:11 America/Los_Angeles
 - bump IxHash req to 0.003; this is the first version that omits coercion from
   hashrefs.

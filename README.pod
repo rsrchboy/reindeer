@@ -8,7 +8,7 @@ Reindeer - Moose with more antlers
 
 =head1 VERSION
 
-This document describes version 0.010 of Reindeer - released April 25, 2012 as part of Reindeer.
+This document describes version 0.011 of Reindeer - released April 26, 2012 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -235,6 +235,38 @@ and the value rebuilt (given that the attribute is lazy and has a builder
 defined).
 
 See L<MooseX::AutoDestruct> for more information.
+
+=head2 ENV
+
+This is a Moose attribute trait that you use when you want the default value
+for an attribute to be populated from the %ENV hash.  So, for example if you
+have set the environment variable USERNAME to 'John' you can do:
+
+    package MyApp::MyClass;
+
+    use Moose;
+    use MooseX::Attribute::ENV;
+
+    has 'username' => (is=>'ro', traits=>['ENV']);
+
+    package main;
+
+    my $myclass = MyApp::MyClass->new();
+
+    print $myclass->username; # STDOUT => 'John';
+
+This is basically similar functionality to something like:
+
+    has 'attr' => (
+            is=>'ro',
+            default=> sub {
+                    $ENV{uc 'attr'};
+            },
+    );
+
+If the named key isn't found in %ENV, then defaults will execute as normal.
+
+See L<MooseX::Attribute::ENV> for more information.
 
 =head2 MultiInitArg
 
