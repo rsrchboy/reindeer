@@ -2,6 +2,9 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.012     2012-06-12 16:50:57 America/North_Dakota/New_Salem
+- add class_type() and role_type() from Moose::Util::TypeConstraints
+
 0.011     2012-04-26 23:26:57 America/Los_Angeles
 - add ENV as an optional attribute trait
 
