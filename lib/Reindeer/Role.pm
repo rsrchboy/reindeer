@@ -25,6 +25,10 @@ sub init_meta {
     Reindeer::Util->import_type_libraries({ -into => $for_class });
     Path::Class->export_to_level(1);
     Try::Tiny->export_to_level(1);
+    Moose::Util::TypeConstraints->import(
+        { into => $for_class },
+        qw{ class_type role_type duck_type },
+    );
     MooseX::MarkAsMethods->import({ into => $for_class }, autoclean => 1);
 
     goto $init_meta if defined $init_meta;

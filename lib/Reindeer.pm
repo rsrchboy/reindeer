@@ -10,6 +10,7 @@ use Moose::Exporter;
 use Class::Load;
 
 use MooseX::Traits ();
+use Moose::Util::TypeConstraints ();
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
     install => [ qw{ import unimport } ],
@@ -32,6 +33,10 @@ sub init_meta {
     Reindeer::Util->import_type_libraries({ -into => $for_class });
     Path::Class->export_to_level(1);
     Try::Tiny->export_to_level(1);
+    Moose::Util::TypeConstraints->import(
+        { into => $for_class },
+        qw{ class_type role_type duck_type },
+    );
     MooseX::MarkAsMethods->import({ into => $for_class }, autoclean => 1);
 
     goto $init_meta if $init_meta;
@@ -131,6 +136,38 @@ parameter or through a writer method.
 
 In addition to all sugar provided by L<Moose> (e.g. has, with, extends), we
 provide a couple new keywords.
+
+=head2 B<class_type ($class, ?$options)>
+
+Creates a new subtype of C<Object> with the name C<$class> and the
+metaclass L<Moose::Meta::TypeConstraint::Class>.
+
+  # Create a type called 'Box' which tests for objects which ->isa('Box')
+  class_type 'Box';
+
+By default, the name of the type and the name of the class are the same, but
+you can specify both separately.
+
+  # Create a type called 'Box' which tests for objects which ->isa('ObjectLibrary::Box');
+  class_type 'Box', { class => 'ObjectLibrary::Box' };
+
+(See also L<Moose::Util::TypeConstraints>.)
+
+=head2 B<role_type ($role, ?$options)>
+
+Creates a C<Role> type constraint with the name C<$role> and the
+metaclass L<Moose::Meta::TypeConstraint::Role>.
+
+  # Create a type called 'Walks' which tests for objects which ->does('Walks')
+  role_type 'Walks';
+
+By default, the name of the type and the name of the role are the same, but
+you can specify both separately.
+
+  # Create a type called 'Walks' which tests for objects which ->does('MooseX::Role::Walks');
+  role_type 'Walks', { role => 'MooseX::Role::Walks' };
+
+(See also L<Moose::Util::TypeConstraints>.)
 
 =head2 class_has => (...)
 
