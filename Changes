@@ -3,53 +3,53 @@ Revision history for Reindeer
 {{$NEXT}}
 
 0.012     2012-06-12 16:50:57 America/North_Dakota/New_Salem
-- add class_type() and role_type() from Moose::Util::TypeConstraints
+	* add class_type() and role_type() from Moose::Util::TypeConstraints
 
 0.011     2012-04-26 23:26:57 America/Los_Angeles
-- add ENV as an optional attribute trait
+	* add ENV as an optional attribute trait
 
 0.010     2012-04-25 10:34:11 America/Los_Angeles
-- bump IxHash req to 0.003; this is the first version that omits coercion from
-  hashrefs.
+	* bump IxHash req to 0.003; this is the first version that omits coercion from
+	  hashrefs.
 
 0.009     2012-04-07 23:30:51 America/Los_Angeles
-- TRIAL release
-- add: MooseX::Traits
+	* TRIAL release
+	* add: MooseX::Traits
 
 0.008     2012-02-28 14:31:07 America/Los_Angeles
-- pod/documentation update only
+	* pod/documentation update only
 
 0.007     2012-02-14 20:47:12 America/Los_Angeles
-- add: MooseX::CurriedDelegation
-- add: MooseX::Types::LoadableClass
-- initial combined types library (Reindeer::Types)
-- Reinder::Util can now export functions on request
+	* add: MooseX::CurriedDelegation
+	* add: MooseX::Types::LoadableClass
+	* initial combined types library (Reindeer::Types)
+	* Reinder::Util can now export functions on request
 
 0.006     2012-02-06 07:42:58 America/Los_Angeles
-- Add explicit version dependencies to most deps.  This should help avoid some
-  install/test failures
+	* Add explicit version dependencies to most deps.  This should help avoid some
+	  install/test failures
 
 0.005     2012-02-05 09:51:30 America/Los_Angeles
-- Use Test::Requires to check for the presence of optional traits
-- Additional "spot-check" tests
+	* Use Test::Requires to check for the presence of optional traits
+	* Additional "spot-check" tests
 
 0.004     2011-11-15 16:39:50 America/Los_Angeles
-- add weaver.ini to invoke (the possibly poorly named)
-  Pod::Weaver::Section::Collect::FromOther, so that we can document without
-  redocumenting
-- Add Path::Class to our exports
-- Add MooseX::Types::Path::Class, ::Tied::IxHash, etc.
-- Add a number of "optional" traits, by ensuring aliases are exported for them
-- Add trait_aliases where any of our attribute extensions don't provide them
-  on their own; this allows for a more consistent interface, especially when
-  the traits may need to be applied manually (e.g. to extended attributes from
-  a superclass)
+	* add weaver.ini to invoke (the possibly poorly named)
+	  Pod::Weaver::Section::Collect::FromOther, so that we can document without
+	  redocumenting
+	* Add Path::Class to our exports
+	* Add MooseX::Types::Path::Class, ::Tied::IxHash, etc.
+	* Add a number of "optional" traits, by ensuring aliases are exported for them
+	* Add trait_aliases where any of our attribute extensions don't provide them
+	  on their own; this allows for a more consistent interface, especially when
+	  the traits may need to be applied manually (e.g. to extended attributes from
+	  a superclass)
 
 0.003     2011-11-06 20:17:59 America/Los_Angeles
 
 0.002     2011-11-03 21:28:26 America/Los_Angeles
-- Require recent MooseX::MarkAsMethods and ::AttributeShortcuts
-- Take advantage of "into" support in MX::MAM 0.14
+	* Require recent MooseX::MarkAsMethods and ::AttributeShortcuts
+	* Take advantage of "into" support in MX::MAM 0.14
 
 0.001     2011-10-27 10:49:02 America/Los_Angeles
-- First release
+	* First release
