@@ -11,7 +11,7 @@ Reindeer - Moose with more antlers
 
 =head1 VERSION
 
-This document describes version 0.013 of Reindeer - released August 27, 2012 as part of Reindeer.
+This document describes version 0.014 of Reindeer - released August 31, 2012 as part of Reindeer.
 
 =head1 SYNOPSIS
 

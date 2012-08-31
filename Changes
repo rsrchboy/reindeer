@@ -2,6 +2,9 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.014     2012-08-31 00:57:56 America/Los_Angeles
+	* enable v5.10 features (say, switch, state) if we're on v5.10 or greater
+
 0.013     2012-08-27 00:03:08 America/Los_Angeles
 	* bump MX::AS dep to 0.015
 
