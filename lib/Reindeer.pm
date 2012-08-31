@@ -26,6 +26,12 @@ sub init_meta {
     my ($class, %options) = @_;
     my $for_class = $options{for_class};
 
+    if ($] >= 5.010) {
+
+        eval 'use feature';
+        feature->import(':5.10');
+    }
+
     ### $for_class
     Moose->init_meta(for_class => $for_class);
 
