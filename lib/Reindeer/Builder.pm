@@ -7,6 +7,7 @@ use warnings;
 
 use Carp;
 use Moose::Exporter;
+use Moose::Autobox;
 use Sub::Install;
 
 use Reindeer ();
@@ -21,31 +22,29 @@ sub import {
     my $target = caller(0); # let's start out simple
     my $for_role = ($target =~ /::Role$/) ? 1 : 0;
 
-    my @also;
+    my $also = [];
     if (exists $config{also}) {
 
         my $also_config = $config{also};
 
-        my @reindeer = Reindeer::Util::also_list();
-        my @exclude  = @{ $config{also}->{exclude} || [] };
-        my @add      = @{ $config{also}->{add}     || [] };
+        $also        = [ Reindeer::Util::also_list() ];
+        my $exclude  = $config{also}->{exclude} || [];
+        my $add      = $config{also}->{add}     || [];
 
-        @also = @reindeer;
+        $also = $also->grep(sub { !$exclude->any($_) })
+            if @$exclude > 0;
 
-        do { @also = grep { ! $_ ~~ [ @exclude ] } @also }
-            if @exclude > 0;
-
-        do { push @also, @add } if @add > 0;
+        $also->push(@$add);
     }
 
-    unshift @also, ($for_role ? 'Moose::Role' : 'Moose');
+    $also->unshift($for_role ? 'Moose::Role' : 'Moose');
 
     # create our methods...
     #my ($import, $unimport, $init_meta) = Moose::Exporter->build_import_methods(
     my %methods;
     @methods{qw/ import unimport init_meta /} =
         Moose::Exporter->build_import_methods(
-            also => [ @also ],
+            also => $also,
         );
 
     my $_install = sub {
