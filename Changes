@@ -2,6 +2,9 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.016     2012-09-17 19:07:37 America/Los_Angeles
+	* drop the ~~ operator from Builder.
+
 0.015     2012-09-06 09:03:22 America/Los_Angeles
 	* doc that v5.10 features are enabled if available
 
