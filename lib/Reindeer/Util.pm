@@ -44,10 +44,11 @@ sub trait_aliases {
     # note that merely specifing aliases does not load the packages; Moose
     # will handle that when (if) the trait is ever used.
     return (
-        [ 'MooseX::AutoDestruct::Trait::Attribute'           => 'AutoDestruct'  ],
-        [ 'MooseX::MultiInitArg::Trait'                      => 'MultiInitArg'  ],
-        [ 'MooseX::TrackDirty::Attributes::Trait::Attribute' => 'TrackDirty'    ],
-        [ 'MooseX::UndefTolerant::Attribute'                 => 'UndefTolerant' ],
+        [ 'MooseX::AutoDestruct::Trait::Attribute'           => 'AutoDestruct'    ],
+        [ 'MooseX::MultiInitArg::Trait'                      => 'MultiInitArg'    ],
+        [ 'MooseX::TrackDirty::Attributes::Trait::Attribute' => 'TrackDirty'      ],
+        [ 'MooseX::UndefTolerant::Attribute'                 => 'UndefTolerant'   ],
+        [ 'MooseX::CascadeClearing::Role::Meta::Attribute'   => 'CascadeClearing' ],
 
         # these don't export a trait_alias, so let's create one
         'MooseX::LazyRequire::Meta::Attribute::Trait::LazyRequire',

@@ -221,6 +221,16 @@ defined).
 
 See L<MooseX::AutoDestruct> for more information.
 
+=head2 CascadeClearing
+
+This attribute trait allows one to designate that certain attributes are to be
+cleared when certain other ones are; that is, when an attribute is cleared
+that clearing will be cascaded down to other attributes.  This is most useful
+when you have attributes that are lazily built.
+
+See L<MooseX::CascadeClearing> for more information and a significantly more
+cogent description.
+
 =head2 ENV
 
 This is a Moose attribute trait that you use when you want the default value
