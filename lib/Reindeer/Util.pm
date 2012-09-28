@@ -62,8 +62,10 @@ sub trait_aliases {
 # If an extension doesn't have a trait that's directly loadable, we build subs
 # to do it here.
 
-sub ENV     { _lazy('MooseX::Attribute::ENV', 'MooseX::Attribute::ENV') }
-sub SetOnce { _lazy('MooseX::SetOnce', 'MooseX::SetOnce::Attribute') }
+sub ENV       { _lazy('MooseX::Attribute::ENV',     'MooseX::Attribute::ENV'                      ) }
+sub SetOnce   { _lazy('MooseX::SetOnce',            'MooseX::SetOnce::Attribute'                  ) }
+sub Shortcuts { _lazy('MooseX::AttributeShortcuts', 'MooseX::AttributeShortcuts::Trait::Attribute') }
+
 sub _lazy   { load_class(shift); shift }
 
 =func as_is
@@ -77,6 +79,7 @@ sub as_is {
     return (
         \&ENV,
         \&SetOnce,
+        \&Shortcuts,
     );
 }
 
