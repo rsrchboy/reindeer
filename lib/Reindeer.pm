@@ -9,7 +9,7 @@ use Reindeer::Util;
 use Moose::Exporter;
 use Class::Load;
 
-use MooseX::Traits ();
+use MooseX::Traitor;
 use Moose::Util::TypeConstraints ();
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
@@ -19,7 +19,7 @@ my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
     trait_aliases => [ Reindeer::Util::trait_aliases()      ],
     as_is         => [ Reindeer::Util::as_is()              ],
 
-    base_class_roles => [ qw{ MooseX::Traits } ],
+    base_class_roles => [ qw{ MooseX::Traitor } ],
 );
 
 sub init_meta {
