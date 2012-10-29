@@ -14,7 +14,7 @@ use Class::Load 'load_class';
 use Moose 1.15                              ( );
 use MooseX::AlwaysCoerce 0.16               ( );
 use MooseX::AbstractMethod 0.003            ( );
-use MooseX::AttributeShortcuts 0.015        ( );
+use MooseX::AttributeShortcuts 0.017        ( );
 use MooseX::ClassAttribute 0.26             ( );
 use MooseX::CurriedDelegation               ( );
 use MooseX::LazyRequire 0.07                ( );
