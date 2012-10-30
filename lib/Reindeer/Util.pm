@@ -28,8 +28,9 @@ use MooseX::Types::LoadableClass 0.006      ( );
 use MooseX::Types::Path::Class 0.05         ( );
 use MooseX::Types::Tied::Hash::IxHash 0.003 ( );
 
-use Path::Class 0.24 ( );
-use Try::Tiny 0.11   ( );
+use MooseX::Params::Validate 0.016 ( );
+use Path::Class 0.24               ( );
+use Try::Tiny 0.11                 ( );
 
 # SlurpyConstructor, Params::Validate
 
