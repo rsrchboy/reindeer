@@ -395,8 +395,6 @@ help present a cohesive whole.
 
 =head1 SEE ALSO
 
-L<Moose>
-
-All of the above referenced packages.
+L<Moose>, and all of the above-referenced packages.
 
 =cut
