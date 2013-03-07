@@ -493,11 +493,7 @@ Please see those modules/websites for more information related to this module.
 
 =item *
 
-L<Moose>
-
-=item *
-
-L<All of the above referenced packages.|All of the above referenced packages.>
+L<Moose>, and all of the above referenced packages.
 
 =back
 
