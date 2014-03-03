@@ -152,6 +152,7 @@ __END__
 =begin Pod::Coverage
 
     SetOnce
+    Shortcuts
 
 =end Pod::Coverage
 
