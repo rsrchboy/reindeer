@@ -7,6 +7,7 @@ use warnings;
 
 use Reindeer::Util;
 use Moose::Exporter;
+use Import::Into;
 use Class::Load;
 
 use MooseX::Traitor;
@@ -38,7 +39,7 @@ sub init_meta {
     ### more properly in import()?
     Reindeer::Util->import_type_libraries({ -into => $for_class });
     Path::Class->export_to_level(1);
-    Try::Tiny->export_to_level(1);
+    Try::Tiny->import::into(1);
     MooseX::Params::Validate->import({ into => $for_class });
     Moose::Util::TypeConstraints->import(
         { into => $for_class },

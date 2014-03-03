@@ -7,6 +7,7 @@ use warnings;
 
 use Reindeer::Util;
 use Moose::Exporter;
+use Import::Into;
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
     install => [ qw{ import unimport } ],
@@ -30,7 +31,7 @@ sub init_meta {
     Moose::Role->init_meta(for_class => $for_class);
     Reindeer::Util->import_type_libraries({ -into => $for_class });
     Path::Class->export_to_level(1);
-    Try::Tiny->export_to_level(1);
+    Try::Tiny->import::into(1);
     MooseX::Params::Validate->import({ into => $for_class });
     Moose::Util::TypeConstraints->import(
         { into => $for_class },
