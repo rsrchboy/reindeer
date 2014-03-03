@@ -2,7 +2,7 @@ use Test::More;
 use Test::Moose::More;
 use Test::Fatal;
 
-for my $import(qw{ file dir class_type role_type }) {
+for my $import(qw{ try catch finally file dir class_type role_type }) {
 
     subtest "checking $import" => sub {
 
