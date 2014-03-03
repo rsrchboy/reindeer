@@ -14,8 +14,7 @@ use Test::Moose::More 0.006;
 with_immutable {
 
     validate_class TestClass => (
-        does       => [ qw{ MooseX::Traits   } ],
-        attributes => [ qw{ _trait_namespace } ],
+        does       => [ qw{ MooseX::Traitor  } ],
     );
 
 } 'TestClass';
