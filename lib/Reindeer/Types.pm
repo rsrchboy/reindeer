@@ -1,5 +1,17 @@
+#
+# This file is part of Reindeer
+#
+# This software is Copyright (c) 2011 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Reindeer::Types;
-
+BEGIN {
+  $Reindeer::Types::AUTHORITY = 'cpan:RSRCHBOY';
+}
+$Reindeer::Types::VERSION = '0.017';
 # ABSTRACT: Reindeer combined type library
 
 use strict;
@@ -15,6 +27,20 @@ __PACKAGE__->provide_types_from(Reindeer::Util::type_libraries());
 !!42;
 
 __END__
+
+=pod
+
+=encoding UTF-8
+
+=for :stopwords Chris Weyl
+
+=head1 NAME
+
+Reindeer::Types - Reindeer combined type library
+
+=head1 VERSION
+
+This document describes version 0.017 of Reindeer::Types - released March 03, 2014 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -33,13 +59,84 @@ role).
 
 =head1 TYPES
 
-=from_other MooseX::Types::LoadableClass / TYPES EXPORTED / type
+=head2 C<LoadableClass>
 
-=from_other MooseX::Types::Common::String / DESCRIPTION / type
+A normal class / package.
 
-=from_other MooseX::Types::Common::Numeric / DESCRIPTION / type
+=head2 C<LoadableRole>
 
-=from_other MooseX::Types::Tied::Hash::IxHash / TYPES / all
+Like C<LoadableClass>, except the loaded package must be a L<Moose::Role>.
+
+=head2 C<SimpleStr>
+
+A C<Str> with no new-line characters.
+
+=head2 C<NonEmptySimpleStr>
+
+A C<Str> with no new-line characters and length > 0
+
+=head2 C<LowerCaseSimpleStr>
+
+A C<Str> with no new-line characters, length > 0 and no uppercase characters
+A coercion exists via C<lc> from C<NonEmptySimpleStr>
+
+=head2 C<UpperCaseSimpleStr>
+
+A C<Str> with no new-line characters, length > 0 and no lowercase characters
+A coercion exists via C<uc> from C<NonEmptySimpleStr>
+
+=head2 C<Password>
+
+=head2 C<StrongPassword>
+
+=head2 C<NonEmptyStr>
+
+A C<Str> with length > 0
+
+=head2 C<LowerCaseStr>
+
+A C<Str> with length > 0 and no uppercase characters.
+A coercion exists via C<lc> from C<NonEmptyStr>
+
+=head2 C<UpperCaseStr>
+
+A C<Str> with length > 0 and no lowercase characters.
+A coercion exists via C<uc> from C<NonEmptyStr>
+
+=head2 C<NumericCode>
+
+A C<Str> with no new-line characters that consists of only Numeric characters.
+Examples include, Social Security Numbers, Personal Identification Numbers, Postal Codes, HTTP Status
+Codes, etc. Supports attempting to coerce from a string that has punctuation
+in it ( e.g credit card number 4111-1111-1111-1111 ).
+
+=head2 C<PositiveNum>
+
+=head2 C<PositiveOrZeroNum>
+
+=head2 C<PositiveInt>
+
+=head2 C<PositiveOrZeroInt>
+
+=head2 C<NegativeNum>
+
+=head2 C<NegativeOrZeroNum>
+
+=head2 C<NegativeInt>
+
+=head2 C<NegativeOrZeroInt>
+
+=head2 C<SingleDigit>
+
+=head2 IxHash
+
+Base type: TiedHash
+
+This type coerces from ArrayRef.  As of 0.004 we no longer coerce from
+HashRef, as that lead to 1) annoyingly easy to miss errors involving expecting
+C<$thing->attribute( { a => 1, b => 2, ... } )> to result in proper ordering;
+and 2) the Hash native trait appearing to work normally but instead silently
+destroying the preserved order (during certain write operations).
 
 (See also L<MooseX::Types::Tied::Hash::IxHash>.)
 
@@ -72,7 +169,48 @@ that package for more information.
 
 =head1 SEE ALSO
 
-L<Reindeer> has the full list of type libraries we incorporate.
-L<MooseX::Types::Combine>.
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Reindeer|Reindeer>
+
+=item *
+
+L<L<Reindeer> has the full list of type libraries we incorporate.|L<Reindeer> has the full list of type libraries we incorporate.>
+
+=item *
+
+L<L<MooseX::Types::Combine>.|L<MooseX::Types::Combine>.>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/reindeer>
+and may be cloned from L<git://github.com/RsrchBoy/reindeer.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/reindeer/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2011 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

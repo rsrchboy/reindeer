@@ -1,4 +1,18 @@
+#
+# This file is part of Reindeer
+#
+# This software is Copyright (c) 2011 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Reindeer;
+BEGIN {
+  $Reindeer::AUTHORITY = 'cpan:RSRCHBOY';
+}
+# git description: 0.016-17-g903cc60
+$Reindeer::VERSION = '0.017';
 
 # ABSTRACT: Moose with more antlers
 
@@ -54,24 +68,20 @@ sub init_meta {
 
 __END__
 
-=begin stopwords
+=pod
 
-AutoDestruct
-MultiInitArg
-UndefTolerant
-autoclean
-rwp
-ttl
-metaclass
-Specifing
+=encoding UTF-8
 
-=end stopwords
+=for :stopwords Chris Weyl AutoDestruct MultiInitArg UndefTolerant autoclean rwp ttl
+metaclass Specifing
 
-=begin Pod::Coverage
+=head1 NAME
 
-    init_meta
+Reindeer - Moose with more antlers
 
-=end Pod::Coverage
+=head1 VERSION
+
+This document describes version 0.017 of Reindeer - released March 03, 2014 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -94,6 +104,8 @@ Reindeer aims to resolve that :)  Reindeer _is_ Moose -- it's just Moose with
 a number of the more useful/popular extensions already applied.  Reindeer is a
 drop-in replacement for your "use Moose" line, that behaves in the exact same
 way... Just with more pointy antlers.
+
+=for Pod::Coverage     init_meta
 
 =head1 EARLY RELEASE!
 
@@ -138,7 +150,155 @@ parameter or through a writer method.
 
 (See also L<MooseX::LazyRequire>.)
 
-=from_other MooseX::AttributeShortcuts / NEW ATTRIBUTE OPTIONS / options
+=head2 is => 'rwp'
+
+Specifying C<is =E<gt> 'rwp'> will cause the following options to be set:
+
+    is     => 'ro'
+    writer => "_set_$name"
+
+=head2 is => 'lazy'
+
+Specifying C<is =E<gt> 'lazy'> will cause the following options to be set:
+
+    is       => 'ro'
+    builder  => "_build_$name"
+    lazy     => 1
+
+B<NOTE:> Since 0.009 we no longer set C<init_arg =E<gt> undef> if no C<init_arg>
+is explicitly provided.  This is a change made in parallel with L<Moo>, based
+on a large number of people surprised that lazy also made one's C<init_def>
+undefined.
+
+=head2 is => 'lazy', default => ...
+
+Specifying C<is =E<gt> 'lazy'> and a default will cause the following options to be
+set:
+
+    is       => 'ro'
+    lazy     => 1
+    default  => ... # as provided
+
+That is, if you specify C<is =E<gt> 'lazy'> and also provide a C<default>, then
+we won't try to set a builder, as well.
+
+=head2 builder => 1
+
+Specifying C<builder =E<gt> 1> will cause the following options to be set:
+
+    builder => "_build_$name"
+
+=head2 clearer => 1
+
+Specifying C<clearer =E<gt> 1> will cause the following options to be set:
+
+    clearer => "clear_$name"
+
+or, if your attribute name begins with an underscore:
+
+    clearer => "_clear$name"
+
+(that is, an attribute named "_foo" would get "_clear_foo")
+
+=head2 predicate => 1
+
+Specifying C<predicate =E<gt> 1> will cause the following options to be set:
+
+    predicate => "has_$name"
+
+or, if your attribute name begins with an underscore:
+
+    predicate => "_has$name"
+
+(that is, an attribute named "_foo" would get "_has_foo")
+
+=head2 trigger => 1
+
+Specifying C<trigger =E<gt> 1> will cause the attribute to be created with a trigger
+that calls a named method in the class with the options passed to the trigger.
+By default, the method name the trigger calls is the name of the attribute
+prefixed with "_trigger_".
+
+e.g., for an attribute named "foo" this would be equivalent to:
+
+    trigger => sub { shift->_trigger_foo(@_) }
+
+For an attribute named "_foo":
+
+    trigger => sub { shift->_trigger__foo(@_) }
+
+This naming scheme, in which the trigger is always private, is the same as the
+builder naming scheme (just with a different prefix).
+
+=head2 builder => sub { ... }
+
+Passing a coderef to builder will cause that coderef to be installed in the
+class this attribute is associated with the name you'd expect, and
+C<builder =E<gt> 1> to be set.
+
+e.g., in your class,
+
+    has foo => (is => 'ro', builder => sub { 'bar!' });
+
+...is effectively the same as...
+
+    has foo => (is => 'ro', builder => '_build_foo');
+    sub _build_foo { 'bar!' }
+
+=head2 isa => ..., constraint => sub { ... }
+
+Specifying the constraint option with a coderef will cause a new subtype
+constraint to be created, with the parent type being the type specified in the
+C<isa> option and the constraint being the coderef supplied here.
+
+For example, only integers greater than 10 will pass this attribute's type
+constraint:
+
+    # value must be an integer greater than 10 to pass the constraint
+    has thinger => (
+        isa        => 'Int',
+        constraint => sub { $_ > 10 },
+        # ...
+    );
+
+Note that if you supply a constraint, you must also provide an C<isa>.
+
+=head2 isa => ..., constraint => sub { ... }, coerce => 1
+
+Supplying a constraint and asking for coercion will "Just Work", that is, any
+coercions that the C<isa> type has will still work.
+
+For example, let's say that you're using the C<File> type constraint from
+L<MooseX::Types::Path::Class>, and you want an additional constraint that the
+file must exist:
+
+    has thinger => (
+        is         => 'ro',
+        isa        => File,
+        constraint => sub { !! $_->stat },
+        coerce     => 1,
+    );
+
+C<thinger> will correctly coerce the string "/etc/passwd" to a
+C<Path::Class:File>, and will only accept the coerced result as a value if
+the file exists.
+
+=head2 coerce => [ Type => sub { ...coerce... }, ... ]
+
+Specifying the coerce option with a hashref will cause a new subtype to be
+created and used (just as with the constraint option, above), with the
+specified coercions added to the list.  In the passed hashref, the keys are
+Moose types (well, strings resolvable to Moose types), and the values are
+coderefs that will coerce a given type to our type.
+
+    has bar => (
+        is     => 'ro',
+        isa    => 'Str',
+        coerce => [
+            Int    => sub { "$_"                       },
+            Object => sub { 'An instance of ' . ref $_ },
+        ],
+    );
 
 =head1 NEW KEYWORDS (SUGAR)
 
@@ -184,9 +344,28 @@ level.
 
 (See also L<MooseX::ClassAttribute>.)
 
-=from_other MooseX::NewDefaults / NEW SUGAR
+=head2 default_for
 
-=from_other MooseX::AbstractMethod / NEW SUGAR
+default_for() is a shortcut to extend an attribute to give it a new default;
+this default value may be any legal value for default options.
+
+    # attribute bar defined elsewhere (e.g. superclass)
+    default_for bar => 'new default';
+
+... is the same as:
+
+    has '+bar' => (default => 'new default');
+
+=head2 abstract
+
+abstract() allows one to declare a method dependency that must be satisfied by a
+subclass before it is invoked, and before the subclass is made immutable.
+
+    abstract 'method_name_that_must_be_satisfied';
+
+=head2 requires
+
+requires() is a synonym for abstract() and works in the way you'd expect.
 
 =head1 OVERLOADS
 
@@ -370,13 +549,59 @@ before autoclean is unleashed, so Everything Will Just Work as Expected.
 
 =head2 L<Path::Class>
 
-=from_other Path::Class / SYNOPSIS / all
+  use Path::Class;
+  
+  my $dir  = dir('foo', 'bar');       # Path::Class::Dir object
+  my $file = file('bob', 'file.txt'); # Path::Class::File object
+  
+  # Stringifies to 'foo/bar' on Unix, 'foo\bar' on Windows, etc.
+  print "dir: $dir\n";
+  
+  # Stringifies to 'bob/file.txt' on Unix, 'bob\file.txt' on Windows
+  print "file: $file\n";
+  
+  my $subdir  = $dir->subdir('baz');  # foo/bar/baz
+  my $parent  = $subdir->parent;      # foo/bar
+  my $parent2 = $parent->parent;      # foo
+  
+  my $dir2 = $file->dir;              # bob
+
+  # Work with foreign paths
+  use Path::Class qw(foreign_file foreign_dir);
+  my $file = foreign_file('Mac', ':foo:file.txt');
+  print $file->dir;                   # :foo:
+  print $file->as_foreign('Win32');   # foo\file.txt
+  
+  # Interact with the underlying filesystem:
+  
+  # $dir_handle is an IO::Dir object
+  my $dir_handle = $dir->open or die "Can't read $dir: $!";
+  
+  # $file_handle is an IO::File object
+  my $file_handle = $file->open($mode) or die "Can't read $file: $!";
 
 See the L<Path::Class> documentation for more detail.
 
 =head2 L<Try::Tiny>
 
-=from_other Try::Tiny / SYNOPSIS / all
+You can use Try::Tiny's C<try> and C<catch> to expect and handle exceptional
+conditions, avoiding quirks in Perl and common mistakes:
+
+  # handle errors with a catch handler
+  try {
+    die "foo";
+  } catch {
+    warn "caught error: $_"; # not $@
+  };
+
+You can also use it like a standalone C<eval> to catch and ignore any error
+conditions.  Obviously, this is an extreme measure not to be undertaken
+lightly:
+
+  # just silence errors
+  try {
+    die "foo";
+  };
 
 See the L<Try::Tiny> documentation for more detail.
 
@@ -397,6 +622,40 @@ help present a cohesive whole.
 
 =head1 SEE ALSO
 
-L<Moose>, and all of the above-referenced packages.
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<L<Moose>, and all of the above-referenced packages.|L<Moose>, and all of the above-referenced packages.>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/reindeer>
+and may be cloned from L<git://github.com/RsrchBoy/reindeer.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/reindeer/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2011 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

@@ -1,7 +1,5 @@
 Revision history for Reindeer
 
-{{$NEXT}}
-
 0.017     2014-03-03 00:52:19 PST-0800
 	* handle Try::Tiny and Exporter's breakup (gh #6; thanks @amiri and
 	  @ether)!

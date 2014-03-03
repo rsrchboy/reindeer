@@ -1,0 +1,534 @@
+---
+abstract: 'Moose with more antlers'
+author:
+  - 'Chris Weyl <cweyl@alumni.drew.edu>'
+build_requires:
+  File::Spec: '0'
+  IO::Handle: '0'
+  IPC::Open3: '0'
+  Moose::Util: '0'
+  Test::CheckDeps: '0.010'
+  Test::Fatal: '0'
+  Test::Moose: '0'
+  Test::Moose::More: '0.009'
+  Test::More: '0.94'
+  Test::Requires: '0'
+  ok: '0'
+  perl: '5.006'
+configure_requires:
+  ExtUtils::MakeMaker: '6.30'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.133380'
+license: lgpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Reindeer
+no_index:
+  directory:
+    - corpus
+    - t
+provides:
+  Reindeer:
+    file: lib/Reindeer.pm
+    version: '0.017'
+  Reindeer::Builder:
+    file: lib/Reindeer/Builder.pm
+    version: '0.017'
+  Reindeer::Role:
+    file: lib/Reindeer/Role.pm
+    version: '0.017'
+  Reindeer::Types:
+    file: lib/Reindeer/Types.pm
+    version: '0.017'
+  Reindeer::Util:
+    file: lib/Reindeer/Util.pm
+    version: '0.017'
+requires:
+  Carp: '0'
+  Class::Load: '0'
+  Import::Into: '0'
+  Moose: '1.15'
+  Moose::Autobox: '0'
+  Moose::Exporter: '0'
+  Moose::Util::TypeConstraints: '0'
+  MooseX::AbstractMethod: '0.003'
+  MooseX::AlwaysCoerce: '0.16'
+  MooseX::AttributeShortcuts: '0.017'
+  MooseX::ClassAttribute: '0.26'
+  MooseX::CurriedDelegation: '0'
+  MooseX::LazyRequire: '0.07'
+  MooseX::MarkAsMethods: '0.14'
+  MooseX::NewDefaults: '0.003'
+  MooseX::Params::Validate: '0.016'
+  MooseX::StrictConstructor: '0.19'
+  MooseX::Traitor: '0'
+  MooseX::Types::Combine: '0'
+  MooseX::Types::Common::Numeric: '0.001004'
+  MooseX::Types::Common::String: '0.001004'
+  MooseX::Types::LoadableClass: '0.006'
+  MooseX::Types::Moose: '0.31'
+  MooseX::Types::Path::Class: '0.05'
+  MooseX::Types::Tied::Hash::IxHash: '0.003'
+  Path::Class: '0.24'
+  Sub::Exporter: '0'
+  Sub::Install: '0'
+  Try::Tiny: '0.11'
+  base: '0'
+  perl: '5.006'
+  strict: '0'
+  warnings: '0'
+resources:
+  bugtracker: https://github.com/RsrchBoy/reindeer/issues
+  homepage: http://metacpan.org/release/Reindeer/
+  repository: git://github.com/RsrchBoy/reindeer.git
+version: '0.017'
+x_Dist_Zilla:
+  perl:
+    version: '5.018001'
+  plugins:
+    -
+      class: Dist::Zilla::Plugin::NextRelease
+      name: '@Filter/NextRelease'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::Git::NextVersion
+      name: '@Filter/Git::NextVersion'
+      version: '2.020'
+    -
+      class: Dist::Zilla::Plugin::ContributorsFromGit
+      name: '@Filter/ContributorsFromGit'
+      version: '0.006'
+    -
+      class: Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch
+      name: '@Filter/@Git::CheckFor/Git::CheckFor::CorrectBranch'
+      version: '0.009'
+    -
+      class: Dist::Zilla::Plugin::Git::CheckFor::Fixups
+      name: '@Filter/@Git::CheckFor/Git::CheckFor::Fixups'
+      version: '0.009'
+    -
+      class: Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
+      name: '@Filter/@Git::CheckFor/Git::CheckFor::MergeConflicts'
+      version: '0.009'
+    -
+      class: Dist::Zilla::Plugin::GatherDir
+      name: '@Filter/GatherDir'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::PromptIfStale
+      config:
+        Dist::Zilla::Plugin::PromptIfStale:
+          check_all_plugins: 0
+          check_all_prereqs: 0
+          modules:
+            - Dist::Zilla
+            - Dist::Zilla::PluginBundle::RSRCHBOY
+          phase: build
+          skip: []
+      name: '@Filter/PromptIfStale'
+      version: '0.020'
+    -
+      class: Dist::Zilla::Plugin::PruneCruft
+      name: '@Filter/PruneCruft'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::Git::Describe
+      name: '@Filter/Git::Describe'
+      version: '0.003'
+    -
+      class: Dist::Zilla::Plugin::ExecDir
+      name: '@Filter/ExecDir'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::ShareDir
+      name: '@Filter/ShareDir'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::MakeMaker
+      name: '@Filter/MakeMaker'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::InstallGuide
+      name: '@Filter/InstallGuide'
+      version: '1.200002'
+    -
+      class: Dist::Zilla::Plugin::Manifest
+      name: '@Filter/Manifest'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::SurgicalPkgVersion
+      name: '@Filter/SurgicalPkgVersion'
+      version: '0.0019'
+    -
+      class: Dist::Zilla::Plugin::ReadmeFromPod
+      name: '@Filter/ReadmeFromPod'
+      version: '0.21'
+    -
+      class: Dist::Zilla::Plugin::MinimumPerl
+      name: '@Filter/MinimumPerl'
+      version: '1.003'
+    -
+      class: Dist::Zilla::Plugin::ReportVersions::Tiny
+      name: '@Filter/ReportVersions::Tiny'
+      version: '1.10'
+    -
+      class: Dist::Zilla::Plugin::AutoPrereqs
+      name: '@Filter/AutoPrereqs'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::Prepender
+      name: '@Filter/Prepender'
+      version: '1.112280'
+    -
+      class: Dist::Zilla::Plugin::PodCoverageTests
+      name: '@Filter/PodCoverageTests'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::PodSyntaxTests
+      name: '@Filter/PodSyntaxTests'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::NoTabsTests
+      config:
+        Dist::Zilla::Plugin::Test::NoTabs:
+          module_finder:
+            - ':InstallModules'
+          script_finder:
+            - ':ExecFiles'
+      name: '@Filter/NoTabsTests'
+      version: '0.06'
+    -
+      class: Dist::Zilla::Plugin::HasVersionTests
+      name: '@Filter/HasVersionTests'
+      version: '1.101420'
+    -
+      class: Dist::Zilla::Plugin::Test::Compile
+      config:
+        Dist::Zilla::Plugin::Test::Compile:
+          filename: t/00-compile.t
+          module_finder:
+            - ':InstallModules'
+          script_finder:
+            - ':ExecFiles'
+      name: '@Filter/Test::Compile'
+      version: '2.039'
+    -
+      class: Dist::Zilla::Plugin::ExtraTests
+      name: '@Filter/ExtraTests'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::NoSmartCommentsTests
+      name: '@Filter/NoSmartCommentsTests'
+      version: '0.006'
+    -
+      class: Dist::Zilla::Plugin::Test::Pod::LinkCheck
+      name: '@Filter/Test::Pod::LinkCheck'
+      version: '1.001'
+    -
+      class: Dist::Zilla::Plugin::Test::MinimumVersion
+      name: '@Filter/Test::MinimumVersion'
+      version: '2.000005'
+    -
+      class: Dist::Zilla::Plugin::Authority
+      name: '@Filter/Authority'
+      version: '1.006'
+    -
+      class: Dist::Zilla::Plugin::MetaConfig
+      name: '@Filter/MetaConfig'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::MetaJSON
+      name: '@Filter/MetaJSON'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::MetaYAML
+      name: '@Filter/MetaYAML'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::MetaNoIndex
+      name: '@Filter/MetaNoIndex'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::MetaProvides::Package
+      config:
+        Dist::Zilla::Plugin::MetaProvides::Package:
+          finder_objects:
+            -
+              class: Dist::Zilla::Plugin::FinderCode
+              name: '@Filter/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
+              version: '5.013'
+        Dist::Zilla::Role::MetaProvider::Provider:
+          inherit_missing: '1'
+          inherit_version: '1'
+          meta_noindex: '1'
+      name: '@Filter/MetaProvides::Package'
+      version: '2.000001'
+    -
+      class: Dist::Zilla::Plugin::GitHub::Meta
+      name: '@Filter/GitHub::Meta'
+      version: '0.36'
+    -
+      class: Dist::Zilla::Plugin::TestRelease
+      name: '@Filter/TestRelease'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::CheckChangesHasContent
+      name: '@Filter/CheckChangesHasContent'
+      version: '0.006'
+    -
+      class: Dist::Zilla::Plugin::CheckPrereqsIndexed
+      name: '@Filter/CheckPrereqsIndexed'
+      version: '0.010'
+    -
+      class: Dist::Zilla::Plugin::Git::Remote::Update
+      name: '@Filter/GitFetchOrigin'
+      version: 0.1.2
+    -
+      class: Dist::Zilla::Plugin::Git::Remote::Check
+      name: '@Filter/GitCheckReleaseBranchSync'
+      version: 0.1.2
+    -
+      class: Dist::Zilla::Plugin::Git::Remote::Check
+      name: '@Filter/GitCheckMasterBranchSync'
+      version: 0.1.2
+    -
+      class: Dist::Zilla::Plugin::Git::Check
+      name: '@Filter/Git::Check'
+      version: '2.020'
+    -
+      class: Dist::Zilla::Plugin::Git::Commit
+      name: '@Filter/Git::Commit'
+      version: '2.020'
+    -
+      class: Dist::Zilla::Plugin::Test::CheckDeps
+      name: '@Filter/Test::CheckDeps'
+      version: '0.012'
+    -
+      class: Dist::Zilla::Plugin::Travis::ConfigForReleaseBranch
+      name: '@Filter/Travis::ConfigForReleaseBranch'
+      version: '0.001'
+    -
+      class: Dist::Zilla::Plugin::Git::Tag
+      name: '@Filter/Git::Tag'
+      version: '2.020'
+    -
+      class: Dist::Zilla::Plugin::Git::CommitBuild
+      name: '@Filter/Git::CommitBuild'
+      version: '2.020'
+    -
+      class: Dist::Zilla::Plugin::UploadToCPAN
+      name: '@Filter/UploadToCPAN'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::Git::Push
+      name: '@Filter/Git::Push'
+      version: '2.020'
+    -
+      class: Dist::Zilla::Plugin::Signature
+      name: '@Filter/Signature'
+      version: '1.100930'
+    -
+      class: Dist::Zilla::Plugin::Twitter
+      name: '@Filter/Twitter'
+      version: '0.025'
+    -
+      class: Dist::Zilla::Plugin::InstallRelease
+      name: '@Filter/InstallRelease'
+      version: '0.008'
+    -
+      class: Dist::Zilla::Plugin::GitHub::Update
+      name: '@Filter/GitHub::Update'
+      version: '0.36'
+    -
+      class: Dist::Zilla::Plugin::ArchiveRelease
+      name: '@Filter/ArchiveRelease'
+      version: '4.00'
+    -
+      class: Dist::Zilla::Plugin::ConfirmRelease
+      name: '@Filter/ConfirmRelease'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::License
+      name: '@Filter/License'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::CPANFile
+      name: '@Filter/CPANFile'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::CopyFilesFromBuild
+      name: '@Filter/CopyFilesFromBuild'
+      version: '0.103510'
+    -
+      class: Dist::Zilla::Plugin::ReadmeAnyFromPod
+      name: '@Filter/ReadmeMarkdownInRoot'
+      version: '0.133360'
+    -
+      class: Dist::Zilla::Plugin::PodWeaver
+      config:
+        Dist::Zilla::Plugin::PodWeaver:
+          finder:
+            - ':InstallModules'
+            - ':ExecFiles'
+          plugins:
+            -
+              class: Pod::Weaver::Plugin::StopWords
+              name: '@RSRCHBOY/StopWords'
+              version: '1.008'
+            -
+              class: Pod::Weaver::Plugin::EnsurePod5
+              name: '@CorePrep/EnsurePod5'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Plugin::H1Nester
+              name: '@CorePrep/H1Nester'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Name
+              name: '@RSRCHBOY/Name'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Version
+              name: '@RSRCHBOY/Version'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Region
+              name: '@RSRCHBOY/prelude'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Generic
+              name: SYNOPSIS
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Generic
+              name: DESCRIPTION
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Generic
+              name: OVERVIEW
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::RSRCHBOY::RoleParameters
+              name: 'ROLE PARAMETERS'
+              version: '0.043'
+            -
+              class: Pod::Weaver::Section::RSRCHBOY::RequiredAttributes
+              name: 'REQUIRED ATTRIBUTES'
+              version: '0.043'
+            -
+              class: Pod::Weaver::Section::RSRCHBOY::LazyAttributes
+              name: 'LAZY ATTRIBUTES'
+              version: '0.043'
+            -
+              class: Pod::Weaver::Section::Collect
+              name: ATTRIBUTES
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Collect
+              name: METHODS
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Collect
+              name: 'REQUIRED METHODS'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Collect
+              name: FUNCTIONS
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Collect
+              name: TYPES
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Collect
+              name: TEST_FUNCTIONS
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Leftovers
+              name: '@RSRCHBOY/Leftovers'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Region
+              name: '@RSRCHBOY/postlude'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::SeeAlso
+              name: '@RSRCHBOY/SeeAlso'
+              version: '1.002'
+            -
+              class: Pod::Weaver::Section::SourceGitHub
+              name: '@RSRCHBOY/SourceGitHub'
+              version: '0.54'
+            -
+              class: Pod::Weaver::Section::Bugs
+              name: '@RSRCHBOY/Bugs'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Authors
+              name: '@RSRCHBOY/Authors'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Section::Contributors
+              name: '@RSRCHBOY/Contributors'
+              version: '0.007'
+            -
+              class: Pod::Weaver::Section::Legal
+              name: '@RSRCHBOY/Legal'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Plugin::Transformer
+              name: '@RSRCHBOY/List'
+              version: '4.006'
+            -
+              class: Pod::Weaver::Plugin::Encoding
+              name: '@RSRCHBOY/Encoding'
+              version: '0.02'
+            -
+              class: Pod::Weaver::Section::Collect::FromOther
+              name: Collect::FromOther
+              version: '0.002'
+      name: '@Filter/PodWeaver'
+      version: '4.005'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':InstallModules'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':IncModules'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':TestFiles'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':ExecFiles'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':ShareFiles'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':MainModule'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':AllFiles'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: ':NoFiles'
+      version: '5.013'
+    -
+      class: Dist::Zilla::Plugin::FinderCode
+      name: '@Filter/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
+      version: '5.013'
+  zilla:
+    class: Dist::Zilla::Dist::Builder
+    config:
+      is_trial: '0'
+    version: '5.013'
+x_authority: cpan:RSRCHBOY
