@@ -1,5 +1,6 @@
 requires "Carp" => "0";
 requires "Class::Load" => "0";
+requires "Import::Into" => "0";
 requires "Moose" => "1.15";
 requires "Moose::Autobox" => "0";
 requires "Moose::Exporter" => "0";
