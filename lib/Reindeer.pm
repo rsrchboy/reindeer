@@ -20,7 +20,7 @@ my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
     trait_aliases => [ Reindeer::Util::trait_aliases()      ],
     as_is         => [ Reindeer::Util::as_is()              ],
 
-    base_class_roles => [ 'MooseX::Traitor' => 0.002 ],
+    base_class_roles => [ 'MooseX::Traitor' => { -version => 0.002 } ],
 );
 
 sub init_meta {
