@@ -4,7 +4,7 @@ Reindeer - Moose with more antlers
 
 # VERSION
 
-This document describes version 0.017 of Reindeer - released March 03, 2014 as part of Reindeer.
+This document describes version 0.018 of Reindeer - released March 28, 2015 as part of Reindeer.
 
 # SYNOPSIS
 
@@ -12,6 +12,7 @@ This document describes version 0.017 of Reindeer - released March 03, 2014 as p
     use Reindeer;
 
     # ...is the same as:
+    use feature ':5.xx'; # where xx is appropriate for your running perl
     use Moose;
     use MooseX::MarkAsMethods autoclean => 1;
     use MooseX::AlwaysCoerce;
@@ -86,7 +87,7 @@ Specifying `is => 'lazy'` will cause the following options to be set:
     builder  => "_build_$name"
     lazy     => 1
 
-__NOTE:__ Since 0.009 we no longer set `init_arg => undef` if no `init_arg`
+**NOTE:** Since 0.009 we no longer set `init_arg => undef` if no `init_arg`
 is explicitly provided.  This is a change made in parallel with [Moo](https://metacpan.org/pod/Moo), based
 on a large number of people surprised that lazy also made one's `init_def`
 undefined.
@@ -166,6 +167,24 @@ e.g., in your class,
     has foo => (is => 'ro', builder => '_build_foo');
     sub _build_foo { 'bar!' }
 
+## isa\_instance\_of => ...
+
+Given a package name, this option will create an `isa` type constraint that
+requires the value of the attribute be an instance of the class (or a
+descendant class) given.  That is,
+
+    has foo => (is => 'ro', isa_instance_of => 'SomeThing');
+
+...is effectively the same as:
+
+    use Moose::TypeConstraints 'class_type';
+    has foo => (
+        is  => 'ro',
+        isa => class_type('SomeThing'),
+    );
+
+...but a touch less awkward.
+
 ## isa => ..., constraint => sub { ... }
 
 Specifying the constraint option with a coderef will cause a new subtype
@@ -221,12 +240,54 @@ coderefs that will coerce a given type to our type.
         ],
     );
 
+## handles => { foo => sub { ... }, ... }
+
+Creating a delegation with a coderef will now create a new, "custom accessor"
+for the attribute.  These coderefs will be installed and called as methods on
+the associated class (just as readers, writers, and other accessors are), and
+will have the attribute metaclass available in $\_.  Anything the accessor
+is called with it will have access to in @\_, just as you'd expect of a method.
+
+e.g., the following example creates an attribute named 'bar' with a standard
+reader accessor named 'bar' and two custom accessors named 'foo' and
+'foo\_too'.
+
+    has bar => (
+
+        is      => 'ro',
+        isa     => 'Int',
+        handles => {
+
+            foo => sub {
+                my $self = shift @_;
+
+                return $_->get_value($self) + 1;
+            },
+
+            foo_too => sub {
+                my $self = shift @_;
+
+                return $self->bar + 1;
+            },
+        },
+    );
+
+...and later,
+
+Note that in this example both foo() and foo\_too() do effectively the same
+thing: return the attribute's current value plus 1.  However, foo() accesses
+the attribute value directly through the metaclass, the pros and cons of
+which this author leaves as an exercise for the reader to determine.
+
+You may choose to use the installed accessors to get at the attribute's value,
+or use the direct metaclass access, your choice.
+
 # NEW KEYWORDS (SUGAR)
 
 In addition to all sugar provided by [Moose](https://metacpan.org/pod/Moose) (e.g. has, with, extends), we
 provide a couple new keywords.
 
-## __class\_type ($class, ?$options)__
+## **class\_type ($class, ?$options)**
 
 Creates a new subtype of `Object` with the name `$class` and the
 metaclass [Moose::Meta::TypeConstraint::Class](https://metacpan.org/pod/Moose::Meta::TypeConstraint::Class).
@@ -242,7 +303,7 @@ you can specify both separately.
 
 (See also [Moose::Util::TypeConstraints](https://metacpan.org/pod/Moose::Util::TypeConstraints).)
 
-## __role\_type ($role, ?$options)__
+## **role\_type ($role, ?$options)**
 
 Creates a `Role` type constraint with the name `$role` and the
 metaclass [Moose::Meta::TypeConstraint::Role](https://metacpan.org/pod/Moose::Meta::TypeConstraint::Role).
@@ -549,8 +610,8 @@ Please see those modules/websites for more information related to this module.
 
 # SOURCE
 
-The development version is on github at [http://github.com/RsrchBoy/reindeer](http://github.com/RsrchBoy/reindeer)
-and may be cloned from [git://github.com/RsrchBoy/reindeer.git](git://github.com/RsrchBoy/reindeer.git)
+The development version is on github at [http://https://github.com/RsrchBoy/reindeer](http://https://github.com/RsrchBoy/reindeer)
+and may be cloned from [git://https://github.com/RsrchBoy/reindeer.git](git://https://github.com/RsrchBoy/reindeer.git)
 
 # BUGS
 
@@ -564,6 +625,23 @@ feature.
 # AUTHOR
 
 Chris Weyl <cweyl@alumni.drew.edu>
+
+## I'm a material boy in a material world
+
+<div>
+    <a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
+    <a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
+    <a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Freindeer&title=RsrchBoy's%20CPAN%20Reindeer&tags=%22RsrchBoy's%20Reindeer%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
+</div>
+
+Please note **I do not expect to be gittip'ed or flattr'ed for this work**,
+rather **it is simply a very pleasant surprise**. I largely create and release
+works like this because I need them or I find it enjoyable; however, don't let
+that stop you if you feel like it ;)
+
+[Flattr this](https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Freindeer&title=RsrchBoy&#x27;s%20CPAN%20Reindeer&tags=%22RsrchBoy&#x27;s%20Reindeer%20in%20the%20CPAN%22),
+[gittip me](https://www.gittip.com/RsrchBoy/), or indulge my
+[Amazon Wishlist](http://bit.ly/rsrchboys-wishlist)...  If you so desire.
 
 # COPYRIGHT AND LICENSE
 

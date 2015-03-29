@@ -2,6 +2,11 @@ Revision history for Reindeer
 
 {{$NEXT}}
 
+0.018     2015-03-28 21:11:48 PDT-0700
+	* Add MooseX::CascadeClearing as an optional trait
+	* Add Shortcuts trait alias
+	* Use an appropriate feature bundle, vs :5.10 everywhere
+
 0.017     2014-03-03 00:52:19 PST-0800
 	* handle Try::Tiny and Exporter's breakup (gh #6; thanks @amiri and
 	  @ether)!

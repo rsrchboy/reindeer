@@ -15,7 +15,7 @@ requires "MooseX::MarkAsMethods" => "0.14";
 requires "MooseX::NewDefaults" => "0.003";
 requires "MooseX::Params::Validate" => "0.016";
 requires "MooseX::StrictConstructor" => "0.19";
-requires "MooseX::Traitor" => "0";
+requires "MooseX::Traitor" => "0.002";
 requires "MooseX::Types::Combine" => "0";
 requires "MooseX::Types::Common::Numeric" => "0.001004";
 requires "MooseX::Types::Common::String" => "0.001004";
@@ -28,7 +28,8 @@ requires "Sub::Exporter" => "0";
 requires "Sub::Install" => "0";
 requires "Try::Tiny" => "0.11";
 requires "base" => "0";
-requires "perl" => "5.006";
+requires "feature" => "0";
+requires "perl" => "5.010";
 requires "strict" => "0";
 requires "warnings" => "0";
 
@@ -44,11 +45,12 @@ on 'test' => sub {
   requires "Test::More" => "0.94";
   requires "Test::Requires" => "0";
   requires "ok" => "0";
-  requires "perl" => "5.006";
+  requires "perl" => "5.010";
 };
 
 on 'configure' => sub {
-  requires "ExtUtils::MakeMaker" => "6.30";
+  requires "ExtUtils::MakeMaker" => "0";
+  requires "perl" => "5.010";
 };
 
 on 'develop' => sub {
