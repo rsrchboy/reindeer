@@ -10,7 +10,7 @@ use Moose::Exporter;
 use Import::Into;
 use Class::Load;
 
-use MooseX::Traitor;
+use MooseX::Traitor 0.002;
 use Moose::Util::TypeConstraints ();
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
