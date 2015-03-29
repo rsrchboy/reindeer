@@ -1,5 +1,15 @@
+#
+# This file is part of Reindeer
+#
+# This software is Copyright (c) 2011 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Reindeer::Util;
-
+our $AUTHORITY = 'cpan:RSRCHBOY';
+$Reindeer::Util::VERSION = '0.018';
 # ABSTRACT: Common and utility functions for Reindeer
 
 use strict;
@@ -34,11 +44,6 @@ use Try::Tiny 0.11                 ( );
 
 # SlurpyConstructor, Params::Validate
 
-=func trait_aliases
-
-Trait alias definitions for our optional traits.
-
-=cut
 
 sub trait_aliases {
 
@@ -69,11 +74,6 @@ sub Shortcuts { _lazy('MooseX::AttributeShortcuts', 'MooseX::AttributeShortcuts:
 
 sub _lazy   { load_class(shift); shift }
 
-=func as_is
-
-A list of sugar to export "as_is".
-
-=cut
 
 sub as_is {
 
@@ -90,12 +90,6 @@ sub as_is {
 # Roles:
 # TraitConstructor, Traits
 
-=func also_list
-
-A list of Moose::Exporter based packages that we should also invoke (through
-Moose::Exporter, that is).
-
-=cut
 
 sub also_list {
 
@@ -111,11 +105,6 @@ sub also_list {
     };
 }
 
-=func import_type_libraries
-
-Import our list of type libraries into a given package.
-
-=cut
 
 sub import_type_libraries {
     my ($class, $opts) = @_;
@@ -127,11 +116,6 @@ sub import_type_libraries {
     return;
 }
 
-=func type_libraries
-
-Returns a list of type libraries currently exported by Reindeer.
-
-=cut
 
 sub type_libraries {
 
@@ -149,12 +133,21 @@ sub type_libraries {
 
 __END__
 
-=begin Pod::Coverage
+=pod
 
-    SetOnce
-    Shortcuts
+=encoding UTF-8
 
-=end Pod::Coverage
+=for :stopwords Chris Weyl
+
+=for :stopwords Wishlist flattr flattr'ed gittip gittip'ed
+
+=head1 NAME
+
+Reindeer::Util - Common and utility functions for Reindeer
+
+=head1 VERSION
+
+This document describes version 0.018 of Reindeer::Util - released March 28, 2015 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -165,5 +158,88 @@ and Reindeer role.  In general, this package contains functions that either
 return lists for L<Moose::Exporter> or actively import other packages into the
 namespace of packages invoking Reindeer or Reindeer::Role (e.g. type
 libraries).
+
+=head1 FUNCTIONS
+
+=head2 trait_aliases
+
+Trait alias definitions for our optional traits.
+
+=head2 as_is
+
+A list of sugar to export "as_is".
+
+=head2 also_list
+
+A list of Moose::Exporter based packages that we should also invoke (through
+Moose::Exporter, that is).
+
+=head2 import_type_libraries
+
+Import our list of type libraries into a given package.
+
+=head2 type_libraries
+
+Returns a list of type libraries currently exported by Reindeer.
+
+=for Pod::Coverage     SetOnce
+    Shortcuts
+
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Reindeer|Reindeer>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://https://github.com/RsrchBoy/reindeer>
+and may be cloned from L<git://https://github.com/RsrchBoy/reindeer.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/reindeer/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head2 I'm a material boy in a material world
+
+=begin html
+
+<a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
+<a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
+<a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Freindeer&title=RsrchBoy's%20CPAN%20Reindeer&tags=%22RsrchBoy's%20Reindeer%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
+
+=end html
+
+Please note B<I do not expect to be gittip'ed or flattr'ed for this work>,
+rather B<it is simply a very pleasant surprise>. I largely create and release
+works like this because I need them or I find it enjoyable; however, don't let
+that stop you if you feel like it ;)
+
+L<Flattr this|https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Freindeer&title=RsrchBoy's%20CPAN%20Reindeer&tags=%22RsrchBoy's%20Reindeer%20in%20the%20CPAN%22>,
+L<gittip me|https://www.gittip.com/RsrchBoy/>, or indulge my
+L<Amazon Wishlist|http://bit.ly/rsrchboys-wishlist>...  If you so desire.
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2011 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

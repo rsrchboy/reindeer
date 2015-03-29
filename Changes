@@ -1,7 +1,5 @@
 Revision history for Reindeer
 
-{{$NEXT}}
-
 0.018     2015-03-28 21:11:48 PDT-0700
 	* Add MooseX::CascadeClearing as an optional trait
 	* Add Shortcuts trait alias
