@@ -27,11 +27,19 @@ sub init_meta {
     my ($class, %options) = @_;
     my $for_class = $options{for_class};
 
-    if ($] >= 5.010) {
+    # enable features to the level of Perl being used
+    my $features
+        = $] >= 5.020 ? ':5.20'
+        : $] >= 5.018 ? ':5.18'
+        : $] >= 5.016 ? ':5.16'
+        : $] >= 5.014 ? ':5.14'
+        : $] >= 5.012 ? ':5.12'
+        : $] >= 5.010 ? ':5.10'
+        :               undef
+        ;
 
-        eval 'use feature';
-        feature->import(':5.10');
-    }
+    do { require feature; feature->import($features) }
+        if $features;
 
     ### $for_class
     Moose->init_meta(for_class => $for_class);
@@ -79,6 +87,7 @@ Specifing
     use Reindeer;
 
     # ...is the same as:
+    use feature ':5.xx'; # where xx is appropriate for your running perl
     use Moose;
     use MooseX::MarkAsMethods autoclean => 1;
     use MooseX::AlwaysCoerce;
