@@ -44,6 +44,7 @@ on 'test' => sub {
   requires "Test::Moose::More" => "0.009";
   requires "Test::More" => "0.94";
   requires "Test::Requires" => "0";
+  requires "namespace::autoclean" => "0";
   requires "ok" => "0";
   requires "perl" => "5.010";
 };
