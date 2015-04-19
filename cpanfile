@@ -55,7 +55,9 @@ on 'configure' => sub {
 };
 
 on 'develop' => sub {
+  requires "Dist::Zilla::PluginBundle::RSRCHBOY" => "0.055";
   requires "Pod::Coverage::TrustPod" => "0";
+  requires "Pod::Weaver::Section::Collect::FromOther" => "0.002";
   requires "Test::More" => "0";
   requires "Test::NoTabs" => "0";
   requires "Test::Pod" => "1.41";
