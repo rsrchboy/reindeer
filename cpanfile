@@ -56,6 +56,7 @@ on 'configure' => sub {
 
 on 'develop' => sub {
   requires "Dist::Zilla::PluginBundle::RSRCHBOY" => "0.055";
+  requires "MooseX::UndefTolerant::Attribute" => "0";
   requires "Pod::Coverage::TrustPod" => "0";
   requires "Pod::Weaver::Section::Collect::FromOther" => "0.002";
   requires "Test::More" => "0";
