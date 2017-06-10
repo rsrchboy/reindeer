@@ -1,5 +1,15 @@
+#
+# This file is part of Reindeer
+#
+# This software is Copyright (c) 2017, 2015, 2014, 2012, 2011 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Reindeer::Role;
-
+our $AUTHORITY = 'cpan:RSRCHBOY';
+$Reindeer::Role::VERSION = '0.019';
 # ABSTRACT: Reindeer in role form
 
 use strict;
@@ -46,11 +56,19 @@ sub init_meta {
 
 __END__
 
-=begin Pod::Coverage
+=pod
 
-    init_meta
+=encoding UTF-8
 
-=end Pod::Coverage
+=for :stopwords Chris Weyl Alex Balhatchet
+
+=head1 NAME
+
+Reindeer::Role - Reindeer in role form
+
+=head1 VERSION
+
+This document describes version 0.019 of Reindeer::Role - released June 09, 2017 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -62,8 +80,43 @@ __END__
 For now, see the L<Reindeer> docs for information about what meta extensions
 are automatically applied.
 
+=for Pod::Coverage     init_meta
+
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Reindeer|Reindeer>
+
+=item *
+
 L<Moose::Role>
+
+=back
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://github.com/RsrchBoy/reindeer/issues>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2017, 2015, 2014, 2012, 2011 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

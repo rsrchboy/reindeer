@@ -1,5 +1,15 @@
+#
+# This file is part of Reindeer
+#
+# This software is Copyright (c) 2017, 2015, 2014, 2012, 2011 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Reindeer::Builder;
-
+our $AUTHORITY = 'cpan:RSRCHBOY';
+$Reindeer::Builder::VERSION = '0.019';
 # ABSTRACT: Easily build a new 'Reindeer' style class
 
 use strict;
@@ -65,11 +75,19 @@ sub import {
 
 __END__
 
-=begin stopwords
+=pod
 
-    metaclass
+=encoding UTF-8
 
-=end stopwords
+=for :stopwords Chris Weyl Alex Balhatchet metaclass
+
+=head1 NAME
+
+Reindeer::Builder - Easily build a new 'Reindeer' style class
+
+=head1 VERSION
+
+This document describes version 0.019 of Reindeer::Builder - released June 09, 2017 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -132,6 +150,39 @@ e.g.
 
 =head1 SEE ALSO
 
-L<Reindeer>, L<Moose::Exporter>.
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Reindeer|Reindeer>
+
+=item *
+
+L<L<Reindeer>, L<Moose::Exporter>.|L<Reindeer>, L<Moose::Exporter>.>
+
+=back
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://github.com/RsrchBoy/reindeer/issues>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2017, 2015, 2014, 2012, 2011 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut

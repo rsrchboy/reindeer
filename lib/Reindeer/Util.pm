@@ -1,5 +1,15 @@
+#
+# This file is part of Reindeer
+#
+# This software is Copyright (c) 2017, 2015, 2014, 2012, 2011 by Chris Weyl.
+#
+# This is free software, licensed under:
+#
+#   The GNU Lesser General Public License, Version 2.1, February 1999
+#
 package Reindeer::Util;
-
+our $AUTHORITY = 'cpan:RSRCHBOY';
+$Reindeer::Util::VERSION = '0.019';
 # ABSTRACT: Common and utility functions for Reindeer
 
 use strict;
@@ -34,11 +44,6 @@ use Try::Tiny 0.11                 ( );
 
 # SlurpyConstructor, Params::Validate
 
-=func trait_aliases
-
-Trait alias definitions for our optional traits.
-
-=cut
 
 sub trait_aliases {
 
@@ -69,11 +74,6 @@ sub Shortcuts { _lazy('MooseX::AttributeShortcuts', 'MooseX::AttributeShortcuts:
 
 sub _lazy   { load_class(shift); shift }
 
-=func as_is
-
-A list of sugar to export "as_is".
-
-=cut
 
 sub as_is {
 
@@ -90,12 +90,6 @@ sub as_is {
 # Roles:
 # TraitConstructor, Traits
 
-=func also_list
-
-A list of Moose::Exporter based packages that we should also invoke (through
-Moose::Exporter, that is).
-
-=cut
 
 sub also_list {
 
@@ -111,11 +105,6 @@ sub also_list {
     };
 }
 
-=func import_type_libraries
-
-Import our list of type libraries into a given package.
-
-=cut
 
 sub import_type_libraries {
     my ($class, $opts) = @_;
@@ -127,11 +116,6 @@ sub import_type_libraries {
     return;
 }
 
-=func type_libraries
-
-Returns a list of type libraries currently exported by Reindeer.
-
-=cut
 
 sub type_libraries {
 
@@ -149,12 +133,19 @@ sub type_libraries {
 
 __END__
 
-=begin Pod::Coverage
+=pod
 
-    SetOnce
-    Shortcuts
+=encoding UTF-8
 
-=end Pod::Coverage
+=for :stopwords Chris Weyl Alex Balhatchet
+
+=head1 NAME
+
+Reindeer::Util - Common and utility functions for Reindeer
+
+=head1 VERSION
+
+This document describes version 0.019 of Reindeer::Util - released June 09, 2017 as part of Reindeer.
 
 =head1 SYNOPSIS
 
@@ -165,5 +156,64 @@ and Reindeer role.  In general, this package contains functions that either
 return lists for L<Moose::Exporter> or actively import other packages into the
 namespace of packages invoking Reindeer or Reindeer::Role (e.g. type
 libraries).
+
+=head1 FUNCTIONS
+
+=head2 trait_aliases
+
+Trait alias definitions for our optional traits.
+
+=head2 as_is
+
+A list of sugar to export "as_is".
+
+=head2 also_list
+
+A list of Moose::Exporter based packages that we should also invoke (through
+Moose::Exporter, that is).
+
+=head2 import_type_libraries
+
+Import our list of type libraries into a given package.
+
+=head2 type_libraries
+
+Returns a list of type libraries currently exported by Reindeer.
+
+=for Pod::Coverage     SetOnce
+    Shortcuts
+
+=head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<Reindeer|Reindeer>
+
+=back
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://github.com/RsrchBoy/reindeer/issues>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2017, 2015, 2014, 2012, 2011 by Chris Weyl.
+
+This is free software, licensed under:
+
+  The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut
