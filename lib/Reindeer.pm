@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 use Reindeer::Util;
-use Moose::Exporter;
+use Moose::Exporter 2.1400;
 use Import::Into;
 use Class::Load;
 
@@ -29,7 +29,8 @@ sub init_meta {
 
     # enable features to the level of Perl being used
     my $features
-        = $] >= 5.024 ? ':5.24'
+        = $] >= 5.026 ? ':5.26'
+        : $] >= 5.024 ? ':5.24'
         : $] >= 5.022 ? ':5.22'
         : $] >= 5.020 ? ':5.20'
         : $] >= 5.018 ? ':5.18'
