@@ -74,7 +74,6 @@ autoclean
 rwp
 ttl
 metaclass
-Specifing
 
 =end stopwords
 
