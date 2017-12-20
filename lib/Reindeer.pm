@@ -252,11 +252,9 @@ for an attribute to be populated from the %ENV hash.  So, for example if you
 have set the environment variable USERNAME to 'John' you can do:
 
     package MyApp::MyClass;
+    use Reindeer;
 
-    use Moose;
-    use MooseX::Attribute::ENV;
-
-    has 'username' => (is=>'ro', traits=>['ENV']);
+    has 'username' => (is=>'ro', traits=>[ ENV ]);
 
     package main;
 
@@ -298,10 +296,8 @@ of undef.  If you specify the value of undef to any of the attributes they
 will not be initialized (or will be set to the default, if applicable).
 Effectively behaving as if you had not provided a value at all.
 
-    package My:Class;
-    use Moose;
-
-    use MooseX::UndefTolerant::Attribute;
+    package My::Class;
+    use Reindeer;
 
     has 'bar' => (
         traits    => [ UndefTolerant ],
