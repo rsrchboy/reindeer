@@ -364,10 +364,12 @@ traits in on the fly:
 
 Non-Moose specific items made available to your class/role:
 
-=head2 Perl v5.10 features
+=head2 Perl v5.10+ features
 
 If you're running on v5.10 or greater of Perl, Reindeer will automatically
-enable v5.10 features in the consuming class.
+enable the default feature set of that level of Perl in the consuming class.
+(e.g. if you're running Perl v5.26, this is the same as C<use v5.26> or
+C<use feature ':5.26'>)
 
 =head2 L<namespace::autoclean>
 
