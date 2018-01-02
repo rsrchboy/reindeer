@@ -1,6 +1,7 @@
 Revision history for Reindeer
 
 {{$NEXT}}
+	* removed the use of Moose::Autobox
 
 0.020     2017-12-20 17:29:08 CST-0600
 	* Use Reindeer in Reindeer documentation (@2shortplanks,
