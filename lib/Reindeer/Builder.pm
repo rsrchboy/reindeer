@@ -7,9 +7,8 @@ use warnings;
 
 use Carp;
 use Moose::Exporter;
-use Moose::Autobox;
 use Sub::Install;
-
+use List::Util 1.33 'none';
 use Reindeer ();
 use Reindeer::Util;
 
@@ -25,19 +24,18 @@ sub import {
     my $also = [];
     if (exists $config{also}) {
 
-        my $also_config = $config{also};
-
-        $also        = [ Reindeer::Util::also_list() ];
         my $exclude  = $config{also}->{exclude} || [];
         my $add      = $config{also}->{add}     || [];
 
-        $also = $also->grep(sub { !$exclude->any($_) })
-            if @$exclude > 0;
+        push @$also, grep {
+            my $thing = $_;
+            none { $thing eq $_ } @$exclude
+        } Reindeer::Util::also_list();
 
-        $also->push(@$add);
+        push @$also, @$add;
     }
 
-    $also->unshift($for_role ? 'Moose::Role' : 'Moose');
+    unshift @$also, ($for_role ? 'Moose::Role' : 'Moose');
 
     # create our methods...
     #my ($import, $unimport, $init_meta) = Moose::Exporter->build_import_methods(
